@@ -459,4 +459,14 @@
     <servlet-name>BoardDetailServlet</servlet-name>
     <url-pattern>/boarddetail.bt</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminMemListServlet</display-name>
+    <servlet-name>AdminMemListServlet</servlet-name>
+    <servlet-class>control.AdminMemListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminMemListServlet</servlet-name>
+    <url-pattern>/adminmemList.do</url-pattern>
+  </servlet-mapping>
 </web-app>
