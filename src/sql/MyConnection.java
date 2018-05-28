@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class MyConnection {	
 	static {
-		/*1)JDBC드라이버 로드*/
+		/*1)JDBC�뱶�씪�씠踰� 濡쒕뱶*/
 		try {			
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
@@ -16,8 +16,8 @@ public class MyConnection {
 	}
 	public static Connection getConnection() throws SQLException {
 		String url="jdbc:oracle:thin:@localhost:1521:orcl";
-		String user="bytruck";
-		String password="1234";
+		String user="solbi";
+		String password="solbi";
 		return 
 				java.sql.DriverManager.getConnection(url, 
 						                             user, 
