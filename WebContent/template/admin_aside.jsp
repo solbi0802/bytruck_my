@@ -12,8 +12,8 @@ String root = request.getContextPath();%>
 <meta name="author" content="">
 <title>Bytruck</title>
 <link rel="icon" href="favicon.ico">
-<link href="<%= root%>/css/helper.css" rel="stylesheet">
-<link href="<%= root%>/css/style.css" rel="stylesheet">
+<link href="<%=root%>/css/helper.css" rel="stylesheet">
+<link href="<%=root%>/css/style.css" rel="stylesheet">
 <link
    href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
    rel="stylesheet" id="bootstrap-css">
