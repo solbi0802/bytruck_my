@@ -3,14 +3,30 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import sql.MyConnection;
 import vo.Board;
 
 public class BoardDAOOracle implements BoardDAO {
+
+	@Override
+	public void insertboard(Board board) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String insertSQL = "insert into board(no, type, title, detail, posted) values(board_no_seq.nextval, 0, ?, ?, sysdate)";
+		try {
+			con = sql.MyConnection.getConnection();
+			pstmt = con.prepareStatement(insertSQL);
+			pstmt.setString(1, board.getTitle());
+			pstmt.setString(2, board.getDetail());
+			pstmt.executeUpdate();
+		}finally {
+			MyConnection.close(pstmt, con);			
+		}
+	}
 
 	@Override
 	public int selectCount() throws Exception {
@@ -48,7 +64,7 @@ public class BoardDAOOracle implements BoardDAO {
 		try {
 			con = sql.MyConnection.getConnection();
 			pstmt = con.prepareStatement(selectAllSQL);
-			int cntPerPage = 3; //«— ∆‰¿Ã¡ˆ¥Á 3∞≥æø ∫∏ø©¡‹
+			int cntPerPage = 3; //Ìïú ÌéòÏù¥ÏßÄÎãπ 3Í∞úÏî© Î≥¥Ïó¨Ï§å
 			int endRow = cntPerPage * page;
 			int startRow = endRow-cntPerPage+1;
 			pstmt.setInt(1, startRow); pstmt.setInt(2, endRow);
@@ -58,7 +74,7 @@ public class BoardDAOOracle implements BoardDAO {
 						 rs.getInt("no"),
 						 rs.getInt("type"),
 						 rs.getString("title"),
-						 rs.getDate("posted"),
+						 rs.getString("posted"),
 						 rs.getInt("views")
 						 ));
 			}
@@ -67,13 +83,7 @@ public class BoardDAOOracle implements BoardDAO {
 			MyConnection.close(rs, pstmt, con);			
 		}
 	}
-
-	@Override
-	public void insertBoard(Board board) throws Exception {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 	@Override
 	public Board selectDetail(int boardNo) throws Exception {
 		Connection con = null;
@@ -93,7 +103,7 @@ public class BoardDAOOracle implements BoardDAO {
 				int type = rs.getInt("type");
 				String title = rs.getString("title");
 				String detail = rs.getString("detail");
-				Date pdate = rs.getDate("posted");
+				String pdate = rs.getString("posted");
 				b = new Board(no, type, title, detail, pdate);
 			}
 		} finally {
@@ -114,5 +124,27 @@ public class BoardDAOOracle implements BoardDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	public void deleteBoard(int boardNum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		//System.out.println(boardNum);
+		try {
+			con = sql.MyConnection.getConnection();
+			String sql = "delete from board\r\n" + 
+					"where no = ? and type = 0";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, boardNum);
+			pstmt.executeQuery();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			MyConnection.close(rs, pstmt, con);
+		}		
 	}
 }

@@ -41,16 +41,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>DupchkServlet</display-name>
-    <servlet-name>DupchkServlet</servlet-name>
-    <servlet-class>control.DupchkServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DupchkServlet</servlet-name>
-    <url-pattern>/dupchk.bt</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>UserdropServlet</display-name>
     <servlet-name>UserdropServlet</servlet-name>
     <servlet-class>control.UserdropServlet</servlet-class>
@@ -148,6 +138,26 @@
   <servlet-mapping>
     <servlet-name>ProfitServlet</servlet-name>
     <url-pattern>/profit.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardListServlet</display-name>
+    <servlet-name>BoardListServlet</servlet-name>
+    <servlet-class>control.BoardListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardListServlet</servlet-name>
+    <url-pattern>/boardlist.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardDetailServlet</display-name>
+    <servlet-name>BoardDetailServlet</servlet-name>
+    <servlet-class>control.BoardDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardDetailServlet</servlet-name>
+    <url-pattern>/boarddetail.bt</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -441,32 +451,42 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>BoardListServlet</display-name>
-    <servlet-name>BoardListServlet</servlet-name>
-    <servlet-class>control.BoardListServlet</servlet-class>
+    <display-name>DupChkServlet</display-name>
+    <servlet-name>DupChkServlet</servlet-name>
+    <servlet-class>control.DupChkServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>BoardListServlet</servlet-name>
-    <url-pattern>/boardlist.bt</url-pattern>
+    <servlet-name>DupChkServlet</servlet-name>
+    <url-pattern>/dupchk.bt</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>BoardDetailServlet</display-name>
-    <servlet-name>BoardDetailServlet</servlet-name>
-    <servlet-class>control.BoardDetailServlet</servlet-class>
+    <display-name>DupChekBusiServlet</display-name>
+    <servlet-name>DupChekBusiServlet</servlet-name>
+    <servlet-class>control.DupChekBusiServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>BoardDetailServlet</servlet-name>
-    <url-pattern>/boarddetail.bt</url-pattern>
+    <servlet-name>DupChekBusiServlet</servlet-name>
+    <url-pattern>/dupchekbusi.bt</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>AdminMemListServlet</display-name>
-    <servlet-name>AdminMemListServlet</servlet-name>
-    <servlet-class>control.AdminMemListServlet</servlet-class>
+    <display-name>SignupBusiServlet</display-name>
+    <servlet-name>SignupBusiServlet</servlet-name>
+    <servlet-class>control.SignupBusiServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AdminMemListServlet</servlet-name>
-    <url-pattern>/adminmemList.do</url-pattern>
+    <servlet-name>SignupBusiServlet</servlet-name>
+    <url-pattern>/signupbusi.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FindIdServlet</display-name>
+    <servlet-name>FindIdServlet</servlet-name>
+    <servlet-class>control.FindIdServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FindIdServlet</servlet-name>
+    <url-pattern>/findid.bt</url-pattern>
   </servlet-mapping>
 </web-app>

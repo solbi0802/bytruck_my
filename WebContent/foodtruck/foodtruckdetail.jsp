@@ -70,14 +70,14 @@ a:hover {
 							</div>
 							<div class="form-group">
 								<div class="col-md-12" align="center">
-									<p>내용</p>
+									<p>우리 푸드트럭 맛있어요오 놀러오세요오오오 여러분~~~~꼭 오시라구용</p>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-md-12" align="center">
 									<h2>
-									<%-- 	<a href="<%=root%>/foodtruck/foodtruck_location.jsp">위치가
-											궁금하신가요?</a> --%>
+										<a href="<%=root%>/foodtruck/foodtruck_location.jsp">위치가
+											궁금하신가요?</a>
 									</h2>
 								</div>
 							</div>

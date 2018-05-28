@@ -29,15 +29,15 @@ public class BoardDetailServlet extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// ÆÄ¶ó¹ÌÅÍ·Î ³Ñ¾î¿Â ±Û¹øÈ£¸¦ °¡Á®¿Â´Ù.
+		// íŒŒë¼ë¯¸í„°ë¡œ ë„˜ì–´ì˜¨ ê¸€ë²ˆí˜¸ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 		String num = request.getParameter("num");
-		System.out.println("num°ª"+num);
+		System.out.println("numê°’"+num);
 		int boardNum = Integer.parseInt(num);
 		request.setAttribute("board", boardNum);
 		try {
 			Board board = service.findDetail(boardNum);
 			request.setAttribute("board", board);
-			System.out.println("¼­ºí¸´¿¡¼­ board°ªÀÌ ¹¹³Ä: " + board);
+			System.out.println("ì„œë¸”ë¦¿ì—ì„œ boardê°’ì´ ë­ëƒ: " + board);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

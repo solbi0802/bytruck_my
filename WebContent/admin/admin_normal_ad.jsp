@@ -7,7 +7,9 @@ String root = request.getContextPath();
 .board {
 	padding-top: 5%;
 }
-
+.board .container{
+	padding-left: 90px;
+}
 footer {
 	margin-top: 10%;
 }

@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="vo.Board" %>
+<%@page import="vo.PageBean" %>
+
+<%@page import="java.util.List" %>
+<%@taglib prefix="p" uri="http://java.sun.com/jsp/jstl/core"%>
+<p:set var="pb" value="${requestSocpe.PageBean }"/>
 <%String root = request.getContextPath();%>
 <!DOCTYPE html>
 
     <title>qna.jsp</title>  
 
-  
   <header>
  	<jsp:include page = "/template/header.jsp"/>
   </header>
@@ -15,6 +20,47 @@
  		padding-top: 1%;
  	}
  </style>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(function(){
+	$('.pagination a').click(function(){
+		var page;
+		if($(this).text() == '«'){
+			page=${pb.startPage}-1;
+		}else if($(this).text() =='»'){
+			page=${pb.endPage}+1;
+		}else{
+			page=$(this).text();
+		}
+		$.ajax({
+			url:"boardlist.do",
+			method:'get',
+			data:'page='+page,
+			success:function(data){
+				$('qna.jsp').empty();
+				$('qna.jsp').jsp(data.trim());
+			}
+		});
+		return false;
+	});
+	$('.pagination a').each(function(index, element){
+		if($(element).text() == '${pb.currentPage}'){
+			$(element).addClass('active');
+		}	
+	});
+	$("button.btn btn-default").click(function(){
+		$ajax({
+			url:'qna_write.jsp',
+			success:function(data){
+				$('qna.jsp').empty();
+				$('qna_write.jsp').jsp(data.trim());
+			}
+		});
+		return false;
+	});
+	
+});
+</script>
 <body>
 <br>
 <br>
@@ -25,90 +71,56 @@
 	<h2>Q&A</h2>
 	<br>
 	<br>
+
   <table class="table table-bordered" style="text-align:center">
-    <thead>
-      <tr>
-      	
+  
+    <board>
+    <div class="board">
+      <tr>      	
         <th style="width: 10%; text-align:center"> 번호</th>
         <th style="width: 50%; text-align:center"> 제목</th>
         <th style="width: 20%; text-align:center">등록일</th>
-        <th style="width: 10%; text-align:center"> 조회</th>
+        <th style="width: 10%; text-align:center"> 조회</th>		    
+      </tr>
+     </div>
+    </board>
+    <p:set var="list" value="${pb.list }"/>
+	<p:forEach items="${list}" var="b">
+	 <board>
+    <div class="board">
+ 	 <p:forEach begin="1" end="${b.level }">▷</p:forEach>
+ 	 ${b.board_seq}
+ 	  <tr>      	
+        <th style="width: 10%; text-align:center">${b.no }</th>
+        <th style="width: 50%; text-align:center"> ${b.title }</th>
+        <th style="width: 20%; text-align:center">${b.date }</th>
+        <th style="width: 10%; text-align:center"> ${b.views }</th>
 		    
       </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td><a href="<%=root%>/qna_detail.jsp">우리집에서 구디까지 의거리는 얼마나 될까?</a></td>
-        <td>2018.05.01</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td><a href="<%=root%>/qna_detail.jsp">이번주 일요일에 자전거 타고 여행을 떠날거에요...</a></td>
-        <td>2018.05.01</td>
-        <td>21</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td><a href="<%=root%>/qna_detail.jsp">즐거운 일요일 바이트럭 고마워요!</a></td>
-        <td>2018.05.01</td>
-        <td>15</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td><a href="<%=root%>/qna_detail.jsp">새우푸드트럭은 어디에 있나요?</a></td>
-        <td>2018.04.28</td>
-        <td>33</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td><a href="<%=root%>/qna_detail.jsp">푸드 트럭은 언제 까지 하나요?</a></td>
-        <td>2018.04.28</td>
-        <td>109</td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td><a href="<%=root%>/qna_detail.jsp">푸드트럭 이용 시간은 언제까지일까요?</a></td>
-        <td>2018.04.28</td>
-        <td>22</td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td><a href="<%=root%>/qna_detail.jsp">동호회를 만들고 싶어요</a></td>
-        <td>2018.04.25</td>
-        <td>14</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td><a href="<%=root%>/qna_detail.jsp">3박4일 자전거 코스를 만들고싶은데 사이트좀 업데이트 해주세요</a></td>
-        <td>2018.04.24</td>
-        <td>5</td>
-      </tr>
-    </tbody>
+ 	 </div>
+ 	 
+    
   </table>
+  </p:forEach>
   <div class="bt" style="margin-left: 10%">
-<button type="button" class="btn btn-default"><a href="<%=root%>/qna_write.jsp">글쓰기</a></button>  
+<button type="button" class="btn btn-default"><a href="<%=root%>/board/qna_write.jsp">글쓰기</a></button>  
 </div>
   				<!-- END TOP FAQs -->
 <div class="row">
-	
 		<div class="pagination" style="width: 400px;margin-left: 30%;">
-	<ul class="pagination pagination-lg">
-	 <li class="active"><a href="qna.jsp">1</a></li>
-	 <li><a href="qna2.jsp">2</a></li>
-	 <li><a href="#">3</a></li>
-	 <li><a href="#">4</a></li>
-	 <li><a href="#">5</a></li>
-	 <li><a href="#">6</a></li>
-	 <li><a href="#">7</a></li>
-	 <li><a href="#">8</a></li>
-	 <li><a href="#">9</a></li>
-	</ul>
-		</div>
-	
+	<p:set var="startPage" value="${pb.startPage }"/>
+	<p:set var="endPage" value="${pb.endPage }"/>
+	<p:if test="${startPage > 1 }">
+		 <li class="active"><a href="qna.jsp">1</a></li>
+	</p:if>
+	<p:forEach begin="${startPage }" end="${endPage }" var="i">
+		 <li><a href="#">${i }</a></li>
+	</p:forEach>
+	<p:if test="${endPage < pb.totalPage }">
+		<li><a href="#">&raquo;</a></li>
+	</p:if>
+		</div>	
 </div>
-
 </div>
 <!-- FOOTER -->
 	<div>

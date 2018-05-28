@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<title>loginform.html</title>
+<title>loginform.jsp</title>
 <style>
+.board {
+	padding-top: 0;
+}
+
+.board .page-header {
+	margin-top: 0;
+}
+
 @media ( min-width : 768px) {
 	.omb_row-sm-offset-3 div:first-child[class*="col-"] {
 		margin-left: 25%;
@@ -84,21 +92,66 @@
 	}
 }
 </style>
-<!-- NAVBAR
-================================================== -->
-<script>
-$(function(){
-	$("a.ad").click(function(){
-		window.open("http://dunkindonuts.co.kr/");
-	});
-});
-</script>
+
 <body>
-	<header>
-		<%@include file="/template/header.jsp"%>
-	</header>
-	<!-- Carousel
-    ================================================== -->
+	<div class="row">
+		<div class="container-fluid">
+			<div class="col-lg-12">
+				<header>
+					<%@include file="/template/header.jsp"%>
+				</header>
+			</div>
+		</div>
+	</div>
+	<script>
+	$(function() {
+		$("a.ad").click(function() {
+			window.open("http://dunkindonuts.co.kr/");
+		});
+	
+		 var $idObj = $('input[type=text]'); //type속성이 text인 input객체를 dom트리에서 찾기
+	      var $btObj = $('button'); //button객체찾기
+	      var $chkObj = $('input[type=checkbox]');//type속성이 checkbox인 input객체찾기
+	      
+	      var itemValue = localStorage.getItem('id');
+	      
+	      if(itemValue != null){
+	         $chkObj.prop('checked', true);
+	      }else{
+	         $chkObj.prop('checked', false);
+	      }
+
+	      $idObj.val(itemValue);
+	      $("form").submit(function(){
+	         var idValue = $idObj.val();
+	         
+	         if($chkObj.prop('checked')){//chkObj가 체크된 경우()
+	           localStorage.setItem('id', idValue);      
+	         }else{//chkObj가 체크안된 경우
+	           localStorage.removeItem('id');
+	         }      
+	         $.ajax({
+	            data:
+	                {
+	                'id':$('input[name=id]').val(),
+	                'pwd':$('input[name=pwd]').val()
+	               },
+	            method:'POST',
+	            url:'<%=root%>/login.bt',
+				success : function(data) {
+					if (data == 1) {
+						alert('로그인 성공');
+						location.href="<%=root%>/index.jsp"
+					} else {		
+						alert('로그인 실패');
+						location.href="<%=root%>/base/loginform.jsp"
+					}
+				}
+			});
+			return false; //기본이벤트처리 막기
+		});
+	});
+</script>
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
@@ -108,54 +161,26 @@ $(function(){
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<div class="item active">
-				<img src="<%=root %>/images/top1.png" alt="First slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>환영합니다.</h1>
-						<p>바이트럭입니다.</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Sign
-								up today</a>
-						</p>
-					</div>
-				</div>
+				<img src="<%=root%>/images/main_illu.jpg" alt="First slide">
+				<div class="container"></div>
 			</div>
 			<div class="item">
-				<img src="<%=root %>/images/top2.jpg" alt="Second slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>Another example headline.</h1>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus. Nullam id
-							dolor id nibh ultricies vehicula ut id elit.</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Learn
-								more</a>
-						</p>
-					</div>
-				</div>
+				<img src="<%=root%>/images/main_bike.jpg" alt="Second slide">
+				<div class="container"></div>
 			</div>
 			<div class="item">
-				<img src="<%=root %>/images/top3.jpg" alt="Third slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>One more for good measure.</h1>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus. Nullam id
-							dolor id nibh ultricies vehicula ut id elit.</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Browse
-								gallery</a>
-						</p>
-					</div>
-				</div>
+				<img src="<%=root%>/images/main_truck.jpg" alt="Third slide">
+				<div class="container"></div>
 			</div>
 		</div>
 		<a class="left carousel-control" href="#myCarousel" role="button"
-			data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
-			aria-hidden="true"></span> <span class="sr-only">Previous</span>
+			data-slide="prev"
+			style="top: 50%; margin-top: -25px; background: none"> <span
+			class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
+			class="sr-only">Previous</span>
 		</a> <a class="right carousel-control" href="#myCarousel" role="button"
-			data-slide="next"> <span
+			data-slide="next"
+			style="top: 50%; margin-top: -25px; background: none"> <span
 			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 			<span class="sr-only">Next</span>
 		</a>
@@ -166,65 +191,66 @@ $(function(){
 		<div class="container">
 			<!-- BREADCRUMBS -->
 			<ol class="breadcrumb link-accent separator-arrow">
-				<li><a href="<%=root %>/index.jsp" title="Home"><i class="fa fa-home"></i></a></li>
+				<li><a href="<%=root%>/index.jsp" title="Home"><i
+						class="fa fa-home"></i></a></li>
 				<li class="active">로그인</li>
 			</ol>
 			<!-- END BREADCRUMBS -->
 
 			<!-- LOGIN BOX -->
 			<div class="row">
-				<form class="form-horizontal" role="form">
+				<form class="form-horizontal" id="form1">
 					<div class="col-sm-5 col-sm-offset-1 col-lg-4 col-lg-offset-2">
 						<br> <br>
-						<div class="omb_login">
-							<div class="form-group">
-								<label for="inputEmail" class="control-label sr-only">Id</label>
-								<div class="col-sm-12">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-user"></i></span>
-										<input type="email" class="form-control" id="inputId"
-											placeholder="아이디를 입력해주세요">
+						<!-- <form class="login" role="loginform" id="form2"> -->
+							<div class="omb_login">
+								<div class="form-group">
+									<label for="inputId" class="control-label sr-only">Id</label>
+									<div class="col-sm-12">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-user"></i></span>
+											<input type="text" class="form-control" id="inputId"
+												name="id" required placeholder="아이디를 입력해주세요">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPwd" class="control-label sr-only">Password</label>
+									<div class="col-sm-12">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+											<input type="password" class="form-control" name="pwd"
+												required id="inputPassword" placeholder="비밀번호를 입력해주세요">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-12">
+										<label class="fancy-checkbox"> <input type="checkbox">
+											<span>아이디 저장</span>
+										</label>
+									</div>
+									<div class="col-sm-12">
+										<button class="btn btn-success btn-block fa fa-sign-in">Login
+										</button>
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="inputPassword" class="control-label sr-only">Password</label>
-								<div class="col-sm-12">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-										<input type="password" class="form-control" id="inputPassword"
-											placeholder="비밀번호를 입력해주세요">
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<label class="fancy-checkbox"> <input type="checkbox">
-										<span>아이디 저장</span>
-									</label>
-								</div>
-								<div class="col-sm-12">
-									<a type="submit"
-										class="btn btn-success btn-block fa fa-sign-in"
-										href="index.jsp">Login </a>
-								</div>
-							</div>
-							<div style="text-align: center">
-								<a href="<%=root %>/base/findId.jsp">아이디 찾기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
-									href="<%=root %>/base/findPwd.jsp">비밀번호 찾기</a>
-							</div>
+						<!-- </form> -->
+						<div style="text-align: center">
+							<a href="<%=root%>/base/findId.jsp">아이디 찾기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+								href="<%=root%>/base/findPwd.jsp">비밀번호 찾기</a>
 						</div>
 						<p>
-							<em>회원이 아니신가요?</em> <a href="<%=root %>/base/signupcover.jsp">&nbsp;<strong>회원가입</strong></a>
+							<em>회원이 아니신가요?</em> <a href="<%=root%>/base/signupcover.jsp">&nbsp;<strong>회원가입</strong></a>
 						</p>
 					</div>
-					<div>
-						<a class="ad" href="#"><img src="<%=root %>/images/ad.png"></a>
-					</div>
 				</form>
+				<div>
+					<a class="ad" href="#"><img src="<%=root%>/images/ad.png"></a>
+				</div>
 			</div>
 		</div>
-
 	</div>
 	<!-- END LOGIN BOX -->
 	<!-- END MAIN -->

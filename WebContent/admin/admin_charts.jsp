@@ -8,6 +8,10 @@ body {
 	padding-top: 5%;
 }
 
+#bo-container.container {
+	padding-left: 90px;
+}
+
 h2, .mem, .likes, .profit {
 	margin-bottom: 5%;
 }
@@ -16,9 +20,9 @@ h2, .mem, .likes, .profit {
 	<div class="aside">
 		<jsp:include page="/template/admin_aside.jsp" />
 	</div>
-	<div class="container">
+	<div class="container" id="bo-container">
 		<div class="row">
-				<h2>CHART</h2>
+			<h2>CHART</h2>
 			<div class="mem">
 				<div class="card-block">
 					<h4 class="card-title">MEMBER</h4>

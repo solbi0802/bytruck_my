@@ -67,6 +67,11 @@ String root = request.getContextPath();%>
 						aria-expanded="false"><i class="fa fa-table"></i><span
 							class="hide-menu"> 배너광고</span></a>	
 				</ul>
+				<span class="go_home" style="display: block;text-align: center;margin-top: 100px;">
+					<a href="<%=root%>" type="button" name="gohome" style="display:inline-block;
+					width:120px;height: 40px;font-size: 20px;line-height: 38px;background-color: #eee;
+					border: 1px solid #ccc;color: #000; box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);">Main</a>
+				</span>
 			</nav>
 		</div>
 	</div>	
