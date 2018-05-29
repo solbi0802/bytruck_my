@@ -1,37 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
 String root = request.getContextPath();
 %>
-<html>
+<html lang="ko">
 <head>
 <meta charset='utf-8' />
+<link href='<%=root%>/css/fullcalendar.css' rel='stylesheet' />
 <link href='<%=root%>/css/fullcalendar.min.css' rel='stylesheet' />
 <link href='<%=root%>/css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
-<script src='<%=root%>/js/moment.min.js'></script>
 <script src='<%=root%>/js/jquery.min.js'></script>
+<script src='<%=root%>/js/jquery-ui.min.js'></script>
+<script src='<%=root%>/js/moment.min.js'></script>
 <script src='<%=root%>/js/fullcalendar.min.js'></script>
-<script src='<%=root%>/js/fullcalendar.js'></script>
-<style>
+<script src='<%=root%>/js/locale-all.js'></script>
 
-
-
-  #calendar {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-</style>
 <script>
-
-  $(document).ready(function() {
+$(document).ready(function() {
 
     $('#calendar').fullCalendar({
       header: {
         left: 'prev,next today',
         center: 'title',
-        right: 'month,agendaWeek,agendaDay,listMonth'
+        right: 'month'
       },
       defaultDate: '2018-03-12',
+      lang:'ko',
       navLinks: true, // can click day/week names to navigate views
       businessHours: true, // display business hours
       editable: true,
@@ -90,7 +85,6 @@ String root = request.getContextPath();
     });
 
   });
-
 </script>
 <style>
 
@@ -102,17 +96,16 @@ String root = request.getContextPath();
   }
 
   #calendar {
-    max-width: 900px;
+    max-width: 600px;
     margin: 0 auto;
   }
 
 </style>
 </head>
 <body>
-	<%-- <div class="aside">
+<div class="aside">
 		<jsp:include page="/template/admin_aside.jsp" />
-	</div> --%>
+</div>
   <div id='calendar'></div>
-
 </body>
 </html>
