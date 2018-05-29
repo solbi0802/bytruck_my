@@ -96,7 +96,8 @@ $(document).ready(function() {
   }
 
   #calendar {
-    max-width: 600px;
+    width: 60%;
+	float: center; 
     margin: 0 auto;
   }
 

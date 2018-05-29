@@ -29,9 +29,8 @@
 }
 .board .container{
 	padding-left: 90px;
-}
-footer {
-	margin-top: 10%;
+	width: 60%;
+	float: center;
 }
 /* td{
 	text-align: center;

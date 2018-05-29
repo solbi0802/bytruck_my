@@ -10,6 +10,8 @@ body {
 
 #bo-container.container {
 	padding-left: 90px;
+	width: 60%;
+	float: center; 
 }
 
 h2, .mem, .likes, .profit {

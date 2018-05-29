@@ -9,6 +9,8 @@ String root = request.getContextPath();
 }
 .board .container{
 	padding-left: 90px;
+	width: 60%;
+	float: center;
 }
 footer {
 	margin-top: 10%;
