@@ -26,7 +26,7 @@ public class EventDAOOracle implements EventDAO{
 			while(rs.next()) {
 				list.add(new Event(
 						 rs.getInt("no"),
-						 rs.getString("userid"),
+						 rs.getString("user_id"),
 						 rs.getString("title"),
 						 rs.getString("detail"),
 						 rs.getDate("event_date")
