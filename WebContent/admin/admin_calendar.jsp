@@ -19,46 +19,41 @@ String root = request.getContextPath();
 
 <script>
 $(document).ready(function() {
-
+	var events = [];
     $('#calendar').fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month'
-      },
-      defaultDate: '2018-06-01',
-      lang:'ko',
-      navLinks: true, // can click day/week names to navigate views
-      businessHours: true, // display business hours
-      editable: true,
-      events: function(start, end, timezone, callback) {  
-    	//--start, end 는 ui상에 보이는 시작일과 마지막일이다.
-    	//-- ui상에 사작일은 현재월의 1일이 아니라 전달의 날짜가 올수도 있다.
-    	//-- 마찬가지로 end일은 현재월의 마지막일이 아니라 다음달의 날짜가 올수도 있다.
-    	//-- 달력에서 월을 변경하게 되면 변경된 월의 현재 날짜가 오거나
-    	//-- 변경된 월의 1일이 온다.
-    		$.ajax({
-    			url: '<%=root%>/calendar.bt',
-    			dataType: 'json',
-    			type : 'post', 
-    				success: function(result) {
-    					var events = [];
-    					$.each(result.calendar, function(index,cal){
-    						events.push({
-    							title:cal.title,
-    							start:cal.date,
-    							detail:cal.detail,
-    							color:'#C2185B'
-    						});
-    					});
-    				},
-    				error:function(){
-    					 alert('에러발생');
-    				}
-    			});
-    		}
-    });
-});
+	      header: {
+	        left: 'prev,next today',
+	        center: 'title',
+	        right: 'month'
+	      },
+	      allDa: true,
+	      defaultDate: '2018-06-01',
+	      lang:'ko',
+	      navLinks: true, // can click day/week names to navigate views
+	      businessHours: true, // display business hours
+	      editable: true,
+	      events:function(start, end, timezone, callback) {
+	    	  		$.ajax({
+	  				type : 'post',
+					url: '<%=root%>/calendar.bt',
+					dataType:'json',
+					success: function(result) {
+					var events = [];
+					console.log("성공!");
+					$.each(result.calendar, function(index, cal) {
+						events.push({
+							title:cal.title,
+							start:cal.start,
+							color:'#C2185B',
+						});
+					});
+				}, error:function(request,status,error){
+			       		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+		});
+	   }
+	});
+}); 
 </script>
 </head>
 <style>
@@ -75,12 +70,19 @@ $(document).ready(function() {
 	float: center; 
     margin: 0 auto;
   }
+   
+  #teat {
+   padding-top:30dp;
+   float: center;
+   display: none;
+  }
 
 </style>
 <body>
 <div class="aside">
-		<jsp:include page="/template/admin_aside.jsp" />
+		<jsp:include page="/template/admin_aside.jsp" /> 
 </div>
-  <div id='calendar'></div>
+  <div id='test'></div>
+  <div id='calendar' ></div>
 </body>
 </html>

@@ -32,7 +32,7 @@ public class CalendarServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			List<Event> calendar = service.findEvent();
-			System.out.println("캘린더:"+calendar);
+			//System.out.println("서블릿에서 캘린더:"+calendar);
 			request.setAttribute("calendar", calendar);
 		} catch (Exception e) {
 			e.printStackTrace();
