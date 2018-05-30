@@ -12,19 +12,16 @@ import vo.Event;
 public class EventDAOOracle implements EventDAO{
 
 	@Override
-	public List<Event> selectEvent(int no) throws Exception {
+	public List<Event> selectEvent() throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String selectAllSQL = "select * from event" 
-							  +"where no = ?";
+		String selectAllSQL = "select * from event";
 		List<Event>list = new ArrayList<>();
 		
 		try {
 			con = sql.MyConnection.getConnection();
 			pstmt = con.prepareStatement(selectAllSQL);
-			
-			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				list.add(new Event(
