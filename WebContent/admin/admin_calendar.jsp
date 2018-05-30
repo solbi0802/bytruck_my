@@ -32,7 +32,32 @@ $(document).ready(function() {
 	      navLinks: true, // can click day/week names to navigate views
 	      businessHours: true, // display business hours
 	      editable: true,
-	      events:function(start, end, timezone, callback) {
+	      events: 
+              function(start, end, timezone, callback) {
+                  $.ajax({
+                    url: '${pageContext.request.contextPath}/calendar.bt',
+                    dataType: 'json',
+                    data: {
+                      start: start.unix(),
+                      end: end.unix()
+                    },
+                    success: function(data) {
+                      var events = [];
+                      $.each(data.calendar, function(index,cal){
+                    events.push({
+                                title: cal.title,
+                                start: cal.start,
+                                color : "#41a6f4"
+                              });
+                    });
+                 callback(events);
+                       
+                    }
+                  });
+           }
+    });
+});
+	    <%--   events:function(start, end, timezone, callback) {
 	    	  		$.ajax({
 	  				type : 'post',
 					url: '<%=root%>/calendar.bt',
@@ -53,7 +78,7 @@ $(document).ready(function() {
 		});
 	   }
 	});
-}); 
+});  --%>
 </script>
 </head>
 <style>
