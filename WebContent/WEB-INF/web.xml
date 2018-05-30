@@ -489,4 +489,14 @@
     <servlet-name>FindIdServlet</servlet-name>
     <url-pattern>/findid.bt</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CalendarServlet</display-name>
+    <servlet-name>CalendarServlet</servlet-name>
+    <servlet-class>control.CalendarServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CalendarServlet</servlet-name>
+    <url-pattern>/calendar.bt</url-pattern>
+  </servlet-mapping>
 </web-app>

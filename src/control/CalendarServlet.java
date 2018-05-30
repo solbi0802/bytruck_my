@@ -13,14 +13,15 @@ import service.EventService;
 import vo.Event;
 
 /**
- * Servlet implementation class EventListServlet
+ * Servlet implementation class CalendarServlet
  */
-public class EventListServlet extends HttpServlet {
+public class CalendarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private EventService service = new EventService();   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EventListServlet() {
+    public CalendarServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,4 +30,15 @@ public class EventListServlet extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			List<Event> calendar = service.findEvent();
+			request.setAttribute("calendar", calendar);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		RequestDispatcher rd;
+		String forwardURL = "/admin/admin_calendar.jsp";
+		rd = request.getRequestDispatcher(forwardURL);
+		rd.forward(request, response);
+	}
 }
