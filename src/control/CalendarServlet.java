@@ -32,12 +32,13 @@ public class CalendarServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			List<Event> calendar = service.findEvent();
+			System.out.println("캘린더:"+calendar);
 			request.setAttribute("calendar", calendar);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		RequestDispatcher rd;
-		String forwardURL = "/admin/admin_calendar.jsp";
+		String forwardURL = "admin/admin_calendar_result.jsp";
 		rd = request.getRequestDispatcher(forwardURL);
 		rd.forward(request, response);
 	}

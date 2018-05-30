@@ -37,4 +37,15 @@ public class EventDAOOracle implements EventDAO{
 			MyConnection.close(rs, pstmt, con);			
 		}
 	}
+	public static void main(String[] args) {
+		EventDAOOracle test = new EventDAOOracle();
+		try {
+			List<Event> list = test.selectEvent();
+			System.out.println(list);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }

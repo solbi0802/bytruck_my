@@ -17,24 +17,6 @@ String root = request.getContextPath();
 <script src='<%=root%>/js/fullcalendar.min.js'></script>
 <script src='<%=root%>/js/locale-all.js'></script>
 
-<!-- json 형식으로 데이터를 받아옴  -->
-<c:set var = "event" value = "${requestScope.event}"/>
-{
-<c:if test="${!empty event}">
-"event":[
-	<c:forEach var="i" items="${event}" varStatus="status">
-	  <c:if test="${status.index != 0}">,</c:if>
-	{"no":"${i.no}", 
- 	"user_id":"${i.user_id}",
- 	"title":"${i.title}",
- 	"detail":"${i.detail}",
- 	"event_date":"${i.event_date}"
-	}
-   </c:forEach>
-	]
-</c:if>
-}
-
 <script>
 $(document).ready(function() {
 
@@ -44,21 +26,41 @@ $(document).ready(function() {
         center: 'title',
         right: 'month'
       },
-      defaultDate: '2018-03-12',
+      defaultDate: '2018-06-01',
       lang:'ko',
       navLinks: true, // can click day/week names to navigate views
       businessHours: true, // display business hours
       editable: true,
-      events: {
-          url: '<%=root%>/eventlist.bt',
-          type: 'POST',
-          error: function() {
-              alert('There was an error while fetching events.');
-          }
-  		}
+      events: function(start, end, timezone, callback) {  
+    	//--start, end 는 ui상에 보이는 시작일과 마지막일이다.
+    	//-- ui상에 사작일은 현재월의 1일이 아니라 전달의 날짜가 올수도 있다.
+    	//-- 마찬가지로 end일은 현재월의 마지막일이 아니라 다음달의 날짜가 올수도 있다.
+    	//-- 달력에서 월을 변경하게 되면 변경된 월의 현재 날짜가 오거나
+    	//-- 변경된 월의 1일이 온다.
+    		$.ajax({
+    			url: '<%=root%>/calendar.bt',
+    			dataType: 'json',
+    			type : 'post', 
+    				success: function(result) {
+    					var events = [];
+    					$.each(result.calendar, function(index,cal){
+    						events.push({
+    							title:cal.title,
+    							start:cal.date,
+    							detail:cal.detail,
+    							color:'#C2185B'
+    						});
+    					});
+    				},
+    				error:function(){
+    					 alert('에러발생');
+    				}
+    			});
+    		}
     });
 });
 </script>
+</head>
 <style>
 
   body {
@@ -75,7 +77,6 @@ $(document).ready(function() {
   }
 
 </style>
-</head>
 <body>
 <div class="aside">
 		<jsp:include page="/template/admin_aside.jsp" />
