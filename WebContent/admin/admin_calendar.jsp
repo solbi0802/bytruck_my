@@ -26,12 +26,11 @@ $(document).ready(function() {
 	        center: 'title',
 	        right: 'prev,next today'
 	      },
-	      allDa: true,
 	      defaultDate: '2018-06-01',
 	      lang:'ko',
 	      navLinks: true, // can click day/week names to navigate views
 	      businessHours: true, // display business hours
-	      editable: true,
+	      editable: false,
 	      events: 
               function(start, end, timezone, callback) {
                   $.ajax({
@@ -47,6 +46,9 @@ $(document).ready(function() {
                     events.push({
                                 title: cal.title,
                                 start: cal.start,
+                                description: 'This is a cool event',
+                                /* description: "[일정상세] "+contents, */
+                                contents: cal.detail,
                                 color : "#f49542"
                               });
                     });
@@ -54,10 +56,13 @@ $(document).ready(function() {
                        
                     }
                   });
-           }
-    });
-    
-    
+           },
+          eventRender : function(event, element) {
+ 	   $(element).tooltip({title: event.title});
+ 	  /*  element[0].title = event.title; */
+ 	  /*  element[1].detail = event.detail; */
+ 	}
+});
 });
 </script>
 </head>
@@ -71,23 +76,15 @@ $(document).ready(function() {
   }
 
   #calendar{
-    width: 65%;
+    width: 60%;
 	float: center; 
     margin: 0 auto;
   }
-   
-  #teat {
-   padding-top:30dp;
-   float: center;
-   display: none;
-  }
-
 </style>
 <body>
 <div class="aside">
 		<jsp:include page="/template/admin_aside.jsp" /> 
 </div>
-  <div id='test'></div>
-  <div id='calendar' ></div>
+<div id='calendar' ></div>
 </body>
 </html>
