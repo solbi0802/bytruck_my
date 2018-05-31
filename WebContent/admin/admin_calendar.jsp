@@ -22,9 +22,9 @@ $(document).ready(function() {
 	var events = [];
     $('#calendar').fullCalendar({
 	      header: {
-	        left: 'prev,next today',
+	        left: 'month',
 	        center: 'title',
-	        right: 'month'
+	        right: 'prev,next today'
 	      },
 	      allDa: true,
 	      defaultDate: '2018-06-01',
@@ -47,7 +47,7 @@ $(document).ready(function() {
                     events.push({
                                 title: cal.title,
                                 start: cal.start,
-                                color : "#41a6f4"
+                                color : "#f49542"
                               });
                     });
                  callback(events);
@@ -57,28 +57,6 @@ $(document).ready(function() {
            }
     });
 });
-	    <%--   events:function(start, end, timezone, callback) {
-	    	  		$.ajax({
-	  				type : 'post',
-					url: '<%=root%>/calendar.bt',
-					dataType:'json',
-					success: function(result) {
-					var events = [];
-					console.log("성공!");
-					$.each(result.calendar, function(index, cal) {
-						events.push({
-							title:cal.title,
-							start:cal.start,
-							color:'#C2185B',
-						});
-					});
-				}, error:function(request,status,error){
-			       		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-			}
-		});
-	   }
-	});
-});  --%>
 </script>
 </head>
 <style>
@@ -90,7 +68,7 @@ $(document).ready(function() {
     font-size: 14px;
   }
 
-  #calendar {
+  #calendar{
     width: 65%;
 	float: center; 
     margin: 0 auto;
