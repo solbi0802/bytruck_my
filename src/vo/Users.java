@@ -38,6 +38,11 @@ public class Users {
 		this.bussiness_number = bussiness_number;
 		this.type = type;
 	}
+	
+	public Users(String type) {
+		super();
+		this.type = type;
+	}
 
 	public String getUser_id() {
 		return user_id;
