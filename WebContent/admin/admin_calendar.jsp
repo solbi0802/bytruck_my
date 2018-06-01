@@ -34,7 +34,7 @@ $(document).ready(function() {
 	      events: 
               function(start, end, timezone, callback) {
                   $.ajax({
-                    url: '${pageContext.request.contextPath}/calendar.bt',
+                    url: '<%=root%>/calendar.bt',
                     dataType: 'json',
                     data: {
                       start: start.unix(),
