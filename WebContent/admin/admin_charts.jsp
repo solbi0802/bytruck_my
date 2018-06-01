@@ -5,7 +5,7 @@
 %>
 <html>
 <head>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <script src="<%=root%>/js/Chart.min.js"></script>
 </head>
 <style>
@@ -22,13 +22,62 @@ body {
 h2, .mem, .likes, .profit {
 	margin-bottom: 5%;
 }
-canvas {
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-}
 </style>
-<body>
+<script>
+$(function() {
+	$.ajax({
+        url: '<%=root%>/grank.bt',
+        dataType: 'json',
+        success: function(data) {
+      	var like = []; var label = [];
+        for(var i = 0; i < data.like_chart.length; i++) {
+        	label.push("아이디: " + data.like_chart[i].id);
+        	like.push(data.like_chart[i].like);
+        	}
+       var lct = document.getElementById("likeChart");
+	   var myChart = new Chart(lct, {
+    		type: 'bar',
+    		label:'test',
+    		data:{
+    			  labels:label,
+    			  datasets:[{
+    				  label:"좋아요",
+    				  data:like,
+    				  backgroundColor: [
+    					  	'rgba(255, 206, 86, 0.2)',
+    		                'rgba(54, 162, 235, 0.2)',
+    		                'rgba(255, 25, 255, 0.2)',
+    		                'rgba(75, 192, 192, 0.2)',
+    		                'rgba(255, 99, 132, 0.2)'
+    		            ],
+    		         borderColor: [
+    		        	 'rgba(255, 206, 86, 1)',
+ 		                 'rgba(54, 162, 235, 1)',
+ 		                 'rgba(255, 25, 255, 1)',
+ 		                 'rgba(75, 192, 192, 1)',
+ 		                 'rgba(255, 99, 132, 1)'
+    		        	 ],
+    		        borderWidth: 1
+    			  }]
+    		},
+    options: {
+    	animation: {
+    		animateScale: true
+    	},
+    	responsive: false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                	}
+              	}]
+              }
+    		}
+		 });
+	  }
+	});
+});
+</script>
 	<div class="aside">
 		<jsp:include page="/template/admin_aside.jsp" />
 	</div>
@@ -38,14 +87,14 @@ canvas {
 			<div class="mem">
 				<div class="card-block" >
 					<h4 class="card-title">MEMBER</h4>
-					<canvas id="myChart"></canvas>
+					<canvas id="memChart"></canvas>
 					<%-- <img src="<%=root%>/images/mem_money_chart.PNG" alt="member chart"> --%>
 				</div>
 			</div>
 			<div class="likes">
 				<div class="card-block">
-					<h4 class="card-title">LIKES</h4>
-					<%-- <img src="<%=root%>/images/like_chart.PNG" alt="likes chart"> --%>
+					<h4 class="card-title">좋아요 순위</h4>
+					<canvas id="likeChart" width="400" height="400"></canvas>
 				</div>
 			</div>
 			<div class="profit">
@@ -56,5 +105,4 @@ canvas {
 			</div>
 		</div>
 	</div>
-</body>
 </html>
