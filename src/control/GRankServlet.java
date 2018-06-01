@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.ReviewService;
+import service.AdminService;
 import vo.Review;
 
 /**
@@ -17,27 +17,30 @@ import vo.Review;
  */
 public class GRankServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private ReviewService service = new ReviewService();
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GRankServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private AdminService service = new AdminService();
 
 	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public GRankServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try {
-		List<Review> good = service.findGoodRank();
-		request.setAttribute("good", good);
-		}catch (Exception e) {
+			List<Review> good = service.findGoodRank();
+			request.setAttribute("good", good);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		RequestDispatcher rd;
-		String forwardURL = "admin/admin_good_result.jsp";
+		String forwardURL = "admin/admin_chart_result.jsp";
 		rd = request.getRequestDispatcher(forwardURL);
 		rd.forward(request, response);
 	}
