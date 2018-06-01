@@ -3,6 +3,11 @@
 <%
 	String root = request.getContextPath();
 %>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="<%=root%>/js/Chart.min.js"></script>
+</head>
 <style>
 body {
 	padding-top: 5%;
@@ -17,6 +22,11 @@ body {
 h2, .mem, .likes, .profit {
 	margin-bottom: 5%;
 }
+canvas {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
 </style>
 <body>
 	<div class="aside">
@@ -26,21 +36,22 @@ h2, .mem, .likes, .profit {
 		<div class="row">
 			<h2>CHART</h2>
 			<div class="mem">
-				<div class="card-block">
+				<div class="card-block" >
 					<h4 class="card-title">MEMBER</h4>
-					<img src="<%=root%>/images/mem_money_chart.PNG" alt="member chart">
+					<canvas id="myChart"></canvas>
+					<%-- <img src="<%=root%>/images/mem_money_chart.PNG" alt="member chart"> --%>
 				</div>
 			</div>
 			<div class="likes">
 				<div class="card-block">
 					<h4 class="card-title">LIKES</h4>
-					<img src="<%=root%>/images/like_chart.PNG" alt="likes chart">
+					<%-- <img src="<%=root%>/images/like_chart.PNG" alt="likes chart"> --%>
 				</div>
 			</div>
 			<div class="profit">
 				<div class="card-block">
 					<h4 class="card-title">PROFIT</h4>
-					<img src="<%=root%>/images/mem_money_chart.PNG" alt="profit chart">
+					<%-- <img src="<%=root%>/images/mem_money_chart.PNG" alt="profit chart"> --%>
 				</div>
 			</div>
 		</div>
