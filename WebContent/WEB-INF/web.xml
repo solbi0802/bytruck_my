@@ -499,4 +499,14 @@
     <servlet-name>CalendarServlet</servlet-name>
     <url-pattern>/calendar.bt</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GRankServlet</display-name>
+    <servlet-name>GRankServlet</servlet-name>
+    <servlet-class>control.GRankServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GRankServlet</servlet-name>
+    <url-pattern>/grank.bt</url-pattern>
+  </servlet-mapping>
 </web-app>
