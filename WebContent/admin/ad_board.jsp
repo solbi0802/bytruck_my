@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <%
 String root = request.getContextPath();
-%>	
+%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<script src="<%= root%>/js/bootstrap.min.js"></script>
 <style>
 .board {
 	padding-top: 5%;
@@ -15,9 +18,6 @@ String root = request.getContextPath();
 footer {
 	margin-top: 10%;
 }
-/* td{
-	text-align: center;
-} */
 </style>
 <body>
 	<div class="aside">
@@ -37,31 +37,28 @@ footer {
 							<div class="card-body">
 								<h4 class="card-title">일반광고</h4>
 								<table class="table table-hover table-condensed text-align=center; ">
-									<thead>
-										<tr>
-											<th></th>
-											<th>글번호</th>
-											<th>글제목</th>
-											<th>아이디</th>
-											<th>게시일</th>
-											<th>조회수</th>
+									<tr>
+										<th></th>
+										<th>글번호</th>
+										<th>글제목</th>
+										<th>아이디</th>
 
-										</tr>
-									</thead>
-									<tbody>
+									</tr>
+									<c:set var="advertise" value="${requestScope.advertise}"/>
+									<c:forEach var="ad" items="${advertise}" varStatus="status">
 										<tr>
-											<td>
-												<div class="checkbox">
-													<label><input type="checkbox" value=""></label>
-												</div>
-											</td>
-											<td>5</td>
-											<td>System Architect</td>
-											<td>Edinburgh</td>
-											<td>2018/05/10</td>
-											<td>10</td>
-										</tr>
-										<tr>
+												<td>
+													<div class="checkbox">
+														<label><input type="checkbox" value=""></label>
+													</div>
+												</td>
+												<td><c:out value="${ad.no}"/></td>
+												<td><c:out value="${ad.no}"/></td>
+												<td><c:out value="${ad.title}"/></td>
+												<td><c:out value="${ad.user_id}"/></td>
+											</tr>
+										</c:forEach>		
+									<!-- 	<tr>
                                                <td>
 												<div class="checkbox">
 													<label><input type="checkbox" value=""></label>
@@ -108,8 +105,7 @@ footer {
                                                 <td>Tokyo</td>
                                                 <td>2010/10/14</td>
                                                 <td>55</td>
-                                            </tr>		
-									</tbody>
+                                            </tr>	 -->	
 								</table>
 							</div>
 						</div>
@@ -118,7 +114,7 @@ footer {
 			</div>
 		</div>
 	</div>
-	<div class="text-center">
+	<!-- <div class="text-center">
       <ul class="pagination">
          <li class="active"><a href="#">1</a></li>
          <li><a href="#">2</a></li>
@@ -126,6 +122,6 @@ footer {
          <li><a href="#">4</a></li>
          <li><a href="#">5</a></li>
       </ul>
-   </div>
+   </div> -->
 </body>
 </html>
