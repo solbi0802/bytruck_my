@@ -40,7 +40,7 @@ public class GRankServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		RequestDispatcher rd;
-		String forwardURL = "admin/admin_chart_result.jsp";
+		String forwardURL = "admin/likeChartResult.jsp";
 		rd = request.getRequestDispatcher(forwardURL);
 		rd.forward(request, response);
 	}

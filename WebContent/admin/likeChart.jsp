@@ -7,8 +7,7 @@
 <head>
 <meta content="text/html; charset=UTF-8">
 <title>차트</title>
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <script src="<%=root%>/js/Chart.min.js"></script>
 </head>
 <canvas id="myChart" width="400" height="400"></canvas>
@@ -35,16 +34,16 @@ $(function() {
     				  backgroundColor: [
     					  	'rgba(255, 206, 86, 0.2)',
     		                'rgba(54, 162, 235, 0.2)',
-    		                'rgba(255, 25, 255, 0.2)',
-    		                'rgba(75, 192, 192, 0.2)',
-    		                'rgba(255, 99, 132, 0.2)'
+                            'rgba(255, 25, 255, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(255, 99, 132, 0.2)'
     		            ],
     		         borderColor: [
     		        	 'rgba(255, 206, 86, 1)',
  		                 'rgba(54, 162, 235, 1)',
- 		                 'rgba(255, 25, 255, 1)',
- 		                 'rgba(75, 192, 192, 1)',
- 		                 'rgba(255, 99, 132, 1)'
+                         'rgba(255, 25, 255, 1)',
+                         'rgba(75, 192, 192, 1)',
+                         'rgba(255, 99, 132, 1)'	
     		        	 ],
     		        borderWidth: 1
     			  }]
