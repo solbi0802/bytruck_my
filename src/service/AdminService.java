@@ -13,9 +13,7 @@ public class AdminService {
 		return dao.selectGoodRank();
 	}
 	
-	public List<Users> findUserCount() throws Exception{
+	public int[] findUserCount() throws Exception{
 		return dao.selectUserConut();
 	}
-	
-	
 }
