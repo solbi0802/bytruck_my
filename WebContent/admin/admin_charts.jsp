@@ -7,6 +7,7 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <script src="<%=root%>/js/Chart.min.js"></script>
+<script src="<%= root%>/js/bootstrap.min.js"></script>
 </head>
 <style>
 body {
@@ -31,21 +32,14 @@ h2, .mem, .likes, .profit {
 			<h2>CHART</h2>
 			<div class="mem">
 				<div class="card-block" >
-					<h4 class="card-title">MEMBER</h4>
-					<!-- <canvas id="memChart"></canvas> -->
-					<%-- <img src="<%=root%>/images/mem_money_chart.PNG" alt="member chart"> --%>
+					<h4 class="card-title">회원 수</h4>
+					<jsp:include page="/admin/memChart.jsp"/>
 				</div>
 			</div>
 			<div class="likes">
 				<div class="card-block">
 					<h4 class="card-title">좋아요 순위</h4>
 					<jsp:include page="/admin/likeChart.jsp"/>
-				</div>
-			</div>
-			<div class="profit">
-				<div class="card-block">
-					<h4 class="card-title">PROFIT</h4>
-					<%-- <img src="<%=root%>/images/mem_money_chart.PNG" alt="profit chart"> --%>
 				</div>
 			</div>
 		</div>
