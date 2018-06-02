@@ -20,8 +20,9 @@ body {
 	float: center; 
 }
 
-h2, .mem, .likes, .profit {
+#title, .mem, .likes, .profit {
 	margin-bottom: 5%;
+	padding-botton: 10%;
 }
 </style>
 	<div class="aside">
@@ -29,13 +30,17 @@ h2, .mem, .likes, .profit {
 	</div>
 	<div class="container" id="bo-container">
 		<div class="row">
-			<h2>CHART</h2>
+			<div class="col-lg-offset-2 col-lg-8 col-lg-offset-2" id = "title">
+			<h1>CHART</h1>
+			</div>
+		</div>
+		<div class="row">
 			<div class="mem">
-				<div class="card-block" >
 					<h4 class="card-title">회원 수</h4>
 					<jsp:include page="/admin/memChart.jsp"/>
-				</div>
 			</div>
+		</div>	
+		<div class="row">
 			<div class="likes">
 				<div class="card-block">
 					<h4 class="card-title">좋아요 순위</h4>
