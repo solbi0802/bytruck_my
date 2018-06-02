@@ -67,7 +67,7 @@ String root = request.getContextPath();%>
 					<li class="nav-label">일정관리</li>
 						<li><a class="has-arrow  " href="<%=root%>/admin/admin_calendar.jsp"
 						aria-expanded="false"><i class="fa fa-bar-chart"></i><span
-							class="hide-menu">일정확인</span></a>		
+							class="hide-menu">이벤트 일정</span></a>		
 				</ul>
 				<span class="go_home" style="display: block;text-align: center;margin-top: 100px;">
 					<a href="<%=root%>" type="button" name="gohome" style="display:inline-block;
