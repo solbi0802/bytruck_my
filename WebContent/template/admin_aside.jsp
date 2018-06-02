@@ -57,9 +57,6 @@ String root = request.getContextPath();%>
 					<li><a class="has-arrow  " href="<%=root%>/admin/admin_charts.jsp"
 						aria-expanded="false"><i class="fa fa-bar-chart"></i><span
 							class="hide-menu">통계</span></a>
-					<li><a class="has-arrow  " href="<%=root%>/admin/admin_likes.jsp"
-						aria-expanded="false"><i class="fa fa-bar-chart"></i><span
-							class="hide-menu">좋아요 순위</span></a>
 					<li class="nav-label">광고관리</li>
 					<li><a class="has-arrow  " href="<%=root%>/admin/admin_plink.jsp"
 						aria-expanded="false"><i class="fa fa-table"></i><span
