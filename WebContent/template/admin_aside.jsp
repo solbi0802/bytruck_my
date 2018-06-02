@@ -39,6 +39,13 @@ String root = request.getContextPath();%>
 	 width:200px;
 	
 }
+button{
+  width:150px;
+  height: 50px;
+  font-size: 20px;
+  line-height: 38px;
+  background-color: #000;
+}
 </style>
 <body>
 		<div class="left-sidebar">
@@ -58,21 +65,16 @@ String root = request.getContextPath();%>
 						aria-expanded="false"><i class="fa fa-bar-chart"></i><span
 							class="hide-menu">통계</span></a>
 					<li class="nav-label">광고관리</li>
-					<li><a class="has-arrow  " href="<%=root%>/admin/admin_plink.jsp"
-						aria-expanded="false"><i class="fa fa-table"></i><span
-							class="hide-menu"> 파워링크</span></a>
 					<li><a class="has-arrow  " href="<%=root%>/admin/admin_normal_ad.jsp"
 						aria-expanded="false"><i class="fa fa-table"></i><span
-							class="hide-menu"> 배너광고</span></a>	
+							class="hide-menu">배너광고</span></a>	
 					<li class="nav-label">일정관리</li>
 						<li><a class="has-arrow  " href="<%=root%>/admin/admin_calendar.jsp"
 						aria-expanded="false"><i class="fa fa-bar-chart"></i><span
 							class="hide-menu">이벤트 일정</span></a>		
 				</ul>
 				<span class="go_home" style="display: block;text-align: center;margin-top: 100px;">
-					<a href="<%=root%>" type="button" name="gohome" style="display:inline-block;
-					width:120px;height: 40px;font-size: 20px;line-height: 38px;background-color: #eee;
-					border: 1px solid #ccc;color: #000; box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);">Main</a>
+				 <a class="btn btn-success col-lg-3 col-lg-offset-2" href="<%=root%>">Main</a>
 				</span>
 			</nav>
 		</div>
