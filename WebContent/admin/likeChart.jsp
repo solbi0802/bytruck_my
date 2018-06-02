@@ -9,7 +9,6 @@
 <title>차트</title>
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-<!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
 <script src="<%=root%>/js/Chart.min.js"></script>
 </head>
 <canvas id="myChart" width="400" height="400"></canvas>
