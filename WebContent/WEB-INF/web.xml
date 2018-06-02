@@ -509,4 +509,14 @@
     <servlet-name>GRankServlet</servlet-name>
     <url-pattern>/grank.bt</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MemRankServlet</display-name>
+    <servlet-name>MemRankServlet</servlet-name>
+    <servlet-class>control.MemRankServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemRankServlet</servlet-name>
+    <url-pattern>/memrank.bt</url-pattern>
+  </servlet-mapping>
 </web-app>
