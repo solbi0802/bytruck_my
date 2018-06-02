@@ -32,7 +32,7 @@ h2, .mem, .likes, .profit {
 			<div class="mem">
 				<div class="card-block" >
 					<h4 class="card-title">MEMBER</h4>
-					<canvas id="memChart"></canvas>
+					<!-- <canvas id="memChart"></canvas> -->
 					<%-- <img src="<%=root%>/images/mem_money_chart.PNG" alt="member chart"> --%>
 				</div>
 			</div>
