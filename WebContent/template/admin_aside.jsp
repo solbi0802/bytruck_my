@@ -39,12 +39,11 @@ String root = request.getContextPath();%>
 	 width:200px;
 	
 }
-button{
+#main{
   width:150px;
   height: 50px;
   font-size: 20px;
-  line-height: 38px;
-  background-color: #000;
+  text-align: center;
 }
 </style>
 <body>
@@ -73,8 +72,8 @@ button{
 						aria-expanded="false"><i class="fa fa-bar-chart"></i><span
 							class="hide-menu">이벤트 일정</span></a>		
 				</ul>
-				<span class="go_home" style="display: block;text-align: center;margin-top: 100px;">
-				 <a class="btn btn-success col-lg-3 col-lg-offset-2" href="<%=root%>">Main</a>
+				<span class="go_home" style="display: block;text-align: center; margin-top: 100px;">
+				 <a class="btn btn-success" id = "main" href="<%=root%>">Main</a>
 				</span>
 			</nav>
 		</div>
