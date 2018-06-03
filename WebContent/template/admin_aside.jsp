@@ -64,7 +64,7 @@ String root = request.getContextPath();%>
 						aria-expanded="false"><i class="fa fa-bar-chart"></i><span
 							class="hide-menu">통계</span></a>
 					<li class="nav-label">광고관리</li>
-					<li><a class="has-arrow  " href="<%=root%>/admin/admin_normal_ad.jsp"
+					<li><a class="has-arrow  " href="<%=root%>/admin/ad_board.jsp"
 						aria-expanded="false"><i class="fa fa-table"></i><span
 							class="hide-menu">배너광고</span></a>	
 					<li class="nav-label">일정관리</li>
