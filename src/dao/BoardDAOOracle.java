@@ -41,7 +41,7 @@ public class BoardDAOOracle implements BoardDAO {
 			pstmt = con.prepareStatement(selectCountSQL);
 			rs = pstmt.executeQuery();
 			rs.next();
-			int totalCount = rs.getInt("totalCnt");
+			int totalCount = rs.getInt("totalcnt");
 			return totalCount;
 		} finally {
 			MyConnection.close(rs, pstmt, con);
@@ -49,62 +49,78 @@ public class BoardDAOOracle implements BoardDAO {
 	}
 
 	@Override
-	public List<Board> selectAll(int page) throws Exception {
+public List<Board> getBoardList(int page) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String selectAllSQL = "SELECT b.*" 
-				+" FROM ( SELECT rownum r, a.no, a.type, a.title, a.user_id, a.views, a.posted" 
-				+" 		  from board a" 
-				+"		  order by a.no desc)b" 
-				+" WHERE type = 0 and" 
-				+" r BETWEEN ? AND ?";
-		List<Board>list = new ArrayList<>();
+		
+		List<Board> list = new ArrayList<Board>();
 		
 		try {
-			con = sql.MyConnection.getConnection();
-			pstmt = con.prepareStatement(selectAllSQL);
-			int cntPerPage = 3; //한 페이지당 3개씩 보여줌
-			int endRow = cntPerPage * page;
-			int startRow = endRow-cntPerPage+1;
-			pstmt.setInt(1, startRow); pstmt.setInt(2, endRow);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				list.add(new Board(
-						 rs.getInt("no"),
-						 rs.getInt("type"),
-						 rs.getString("title"),
-						 rs.getString("posted"),
-						 rs.getInt("views")
-						 ));
-			}
-			return list;
-		}finally {
-			MyConnection.close(rs, pstmt, con);			
+			
+		con = MyConnection.getConnection();
+		
+		String sql = "SELECT b.*\r\n" + 
+				"FROM   (SELECT  rownum r, a.*\r\n" + 
+				"        FROM (select *\r\n" + 
+				"              from board\r\n" + 
+				"             )a\r\n" + 
+				"        WHERE type = 0\r\n" + 
+				"        order by no desc\r\n" + 
+				"        )b\r\n" + 
+				"where r >=? and r <= ?"; //지금 이 문장은 10개만 불러온다. 다음 페이지에도 뿌릴려면 
+			
+		pstmt = con.prepareStatement(sql);
+		int cntPerpage=10;
+		int endRow=cntPerpage * page;
+		int startRow = endRow - cntPerpage + 1;
+		
+		pstmt.setInt(1, startRow);
+		pstmt.setInt(2, endRow);		
+		rs = pstmt.executeQuery();	
+		System.out.println("execute");
+		while(rs.next()) {
+			Board bl = new Board();
+			bl.setNo(rs.getInt("no"));
+			bl.setType(rs.getInt("type"));
+			bl.setTitle(rs.getString("title"));
+			bl.setDetail(rs.getString("detail"));
+			bl.setUser_id(rs.getString("user_id"));
+			bl.setViews(rs.getInt("views"));
+			bl.setPosted(rs.getString("posted"));
+			list.add(bl);	
+			System.out.println(bl.getNo());
 		}
+		}catch(Exception e) {
+			e.getMessage();
+		}finally {
+			MyConnection.close(rs,pstmt,con);
+		}
+		return list;
 	}
 	
 	@Override
-	public Board selectDetail(int boardNo) throws Exception {
+	public Board selectDetail(int boardNo,int btype) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Board b = null;
 		String selectDetailSQL = "SELECT no, type, title, detail, posted"
 								+" FROM board"
-								+" WHERE no = ? and type=0";
+								+" WHERE no = ? and type=?";
 		try {
 			con = sql.MyConnection.getConnection();
 			pstmt = con.prepareStatement(selectDetailSQL);
 			pstmt.setInt(1,boardNo);
+			pstmt.setInt(2, btype);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				int no = rs.getInt("no");
-				int type = rs.getInt("type");
+				int no = boardNo;
+				int t = btype;
 				String title = rs.getString("title");
 				String detail = rs.getString("detail");
 				String pdate = rs.getString("posted");
-				b = new Board(no, type, title, detail, pdate);
+				b = new Board(no, t, title, detail, pdate);
 			}
 		} finally {
 			MyConnection.close(rs, pstmt, con);
@@ -113,13 +129,10 @@ public class BoardDAOOracle implements BoardDAO {
 	}
 	public static void main(String[] args) {
 		BoardDAOOracle test = new BoardDAOOracle();
-		int page=1;
-		int boardNo = 2;
+		int boardNo = 3; int btype= 0;
 		try {
-			List<Board>list = test.selectAll(page);
-			for(Board b:list) {
-				System.out.println(b);
-			}
+			Board b = test.selectDetail(boardNo, btype);
+			System.out.println("공지사항 게시판: " +b);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

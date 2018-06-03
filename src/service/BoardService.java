@@ -17,11 +17,11 @@ public class BoardService {
 	}
 	
 	public List<Board> findAll(int page) throws Exception{
-		return dao.selectAll(page);
+		return dao.getBoardList(page);
 	}
 	
-	public Board findDetail(int boardNo) throws Exception {
-		return dao.selectDetail(boardNo);
+	public Board findDetail(int boardNo, int btype) throws Exception {
+		return dao.selectDetail(boardNo, btype);
 	}
 	
 	public void addWrite(Board board) throws Exception{
