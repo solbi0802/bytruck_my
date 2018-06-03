@@ -29,13 +29,17 @@ public class BoardDetailServlet extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 파라미터로 넘어온 글번호를 가져온다.
+		// 파라미터로 넘어온 글번호와 타입을 가져온다.
 		String num = request.getParameter("num");
-		System.out.println("num값"+num);
+		String bname = request.getParameter("type");
+		System.out.println("num값: "+num+", type값: "+bname);
 		int boardNum = Integer.parseInt(num);
-		request.setAttribute("board", boardNum);
+		int type = Integer.parseInt(bname);
+		request.setAttribute("bnum", boardNum);
+		request.setAttribute("btype",bname);
+		
 		try {
-			Board board = service.findDetail(boardNum);
+			Board board = service.findDetail(boardNum, type);
 			request.setAttribute("board", board);
 			System.out.println("서블릿에서 board값이 뭐냐: " + board);
 			
@@ -44,7 +48,14 @@ public class BoardDetailServlet extends HttpServlet {
 			request.setAttribute("result", e.getMessage());
 		}		
 		RequestDispatcher rd;
-		String forwardURL = "brand/notice_detail.jsp";
+		String forwardURL = null;
+		if(type == 0) {
+			forwardURL = "brand/notice_detail.jsp";
+		}else if(type== 1) {
+			forwardURL = "board/qna.jsp";
+		}else if(type== 2) {
+			forwardURL = "board/faq.jsp";
+		}
 		System.out.println("forward");
 		rd = request.getRequestDispatcher(forwardURL);
 		rd.forward(request, response);		
