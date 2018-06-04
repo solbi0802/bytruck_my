@@ -52,9 +52,7 @@ public class BoardDetailServlet extends HttpServlet {
 		if(type == 0) {
 			forwardURL = "brand/notice_detail.jsp";
 		}else if(type== 1) {
-			forwardURL = "board/qna.jsp";
-		}else if(type== 2) {
-			forwardURL = "board/faq.jsp";
+			forwardURL = "board/qna_detail.jsp";
 		}
 		System.out.println("forward");
 		rd = request.getRequestDispatcher(forwardURL);
