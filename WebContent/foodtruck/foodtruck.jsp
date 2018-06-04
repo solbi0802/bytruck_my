@@ -25,7 +25,6 @@
 			</div>
 		</div>
 	</div>
-	</script>
 	<div class="board">
 		<div class="row">
 			<div class="container">
@@ -37,7 +36,7 @@
 				</ol>
 				<div class="page-header">
 					<div class="row">
-						<div class=col-lg-12">
+						<div class=col-lg-12>
 							<h1 align="center">
 								<b>FOOD TRUCK</b>
 							</h1>
@@ -103,8 +102,8 @@
 				</div> -->
 				<!-- end tab Header -->
 				<br>
-				<div class="foodlist">
-				<a href="<%=root%>/foodtruckdetail.bt?num=0"></a>
+				<div class="foodlist" style="cursor:pointer" 
+					 onclick ="window.location.href='<%=root%>/foodtruckdetail.bt?num=2';">
 				</div>
 			</div>
 		</div>
