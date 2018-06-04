@@ -151,8 +151,7 @@
 			<a href="#">&raquo;</a>
 		</p:if>
 	</div>
-	</div>
-		</ul>
+	</ul>
 	</div>
 	<!-- END MAIN -->
 	<!-- FOOTER -->
