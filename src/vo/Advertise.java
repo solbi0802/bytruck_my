@@ -89,6 +89,16 @@ public class Advertise {
 		this.no = no;
 		this.title = title;
 	}
+	
+	
+
+	public Advertise(int no, String title, String user_id, String detail) {
+		super();
+		this.user_id = user_id;
+		this.no = no;
+		this.title = title;
+		this.detail = detail;
+	}
 
 	@Override
 	public String toString() {

@@ -11,4 +11,7 @@ public class AdvertiseService {
 	public List<Advertise> findAllAd() throws Exception {
 		return dao.selectAllAd();
 	}
+	public Advertise findDetail(int no) throws Exception {
+		return dao.selectDetail(no);
+	}
 }
