@@ -8,6 +8,7 @@ import java.util.List;
 
 import sql.MyConnection;
 import vo.Advertise;
+import vo.Board;
 
 public class AdvertiseDAOOracle implements AdvertiseDAO {
 
@@ -41,5 +42,32 @@ public class AdvertiseDAOOracle implements AdvertiseDAO {
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public Advertise selectDetail(int no) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Advertise ad = new Advertise();
+		String selectDetailSQL = "SELECT no, title, user_id, detail"
+								+" FROM advertisement"
+								+" WHERE no = ?"
+								+" ORDER BY no desc";
+		try {
+			con = sql.MyConnection.getConnection();
+			pstmt = con.prepareStatement(selectDetailSQL);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				String title = rs.getString("title");
+				String id = rs.getString("user_id");
+				String detail = rs.getString("detail");
+				ad = new Advertise(no, title, id, detail);
+			}
+		} finally {
+			MyConnection.close(rs, pstmt, con);
+		}
+		return ad;
 	}
 }
