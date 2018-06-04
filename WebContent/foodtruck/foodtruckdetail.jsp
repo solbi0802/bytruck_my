@@ -1,3 +1,4 @@
+<%@page import="vo.Foodtruck_Location"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <head>
@@ -19,6 +20,10 @@ a:hover {
 }
 </style>
 </head>
+<%
+Foodtruck_Location fl = (Foodtruck_Location)request.getAttribute("fl");
+System.out.println("공지사항의 board : " +fl);
+%>
 <body>
 	<div class="row">
 		<div class="container-fluid">
@@ -56,10 +61,10 @@ a:hover {
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h2 class="panel-title section-heading no-margin">푸드트럭 제목</h2>
+						<h2 class="panel-title section-heading no-margin">푸드트럭 제목 <%=fl.getTitle()%></h2>
 					</div>
 					<div class="panel-heading">
-						<h2 class="panel-title section-heading no-margin">푸드트럭 날짜</h2>
+						<h2 class="panel-title section-heading no-margin">푸드트럭 날짜 <%=fl.getOpendate()%></h2>
 					</div>
 					<div class="panel-body">
 						<div class="form-horizontal">
@@ -70,7 +75,7 @@ a:hover {
 							</div>
 							<div class="form-group">
 								<div class="col-md-12" align="center">
-									<p>우리 푸드트럭 맛있어요오 놀러오세요오오오 여러분~~~~꼭 오시라구용</p>
+									<p><%=fl.getDetail()%></p>
 								</div>
 							</div>
 							<div class="form-group">

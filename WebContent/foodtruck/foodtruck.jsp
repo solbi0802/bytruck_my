@@ -104,7 +104,7 @@
 				<!-- end tab Header -->
 				<br>
 				<div class="foodlist">
-				
+				<a href="<%=root%>/foodtruckdetail.bt?num=0"></a>
 				</div>
 			</div>
 		</div>

@@ -25,4 +25,8 @@ public class FoodtruckService {
 		}
 		return list;
 	}
+	
+	public Foodtruck_Location findDetail(int fNum) throws Exception {
+		return dao.selectDetail(fNum);
+	}
 }
