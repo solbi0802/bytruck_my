@@ -45,8 +45,8 @@ System.out.println("공지사항의 board : " + board);
 				<ol class="breadcrumb link-accent separator-arrow">
 					<li><a href="<%=root%>/index.jsp" title="Home"><i
 							class="fa fa-home"></i></a></li>
-					<li><a href="<%=root%>/foodtruck/foodtruck.jsp">푸드트럭 소개</a></li>
-					<li><a href="<%=root%>/foodtruck/foodboard.jsp">푸드트럭 등록</a></li>
+					<li><a href="<%=root%>/brand/summary.jsp">브랜드 소개</a></li>
+					<li><a href="<%=root%>/brand/notice.jsp">공지사항</a></li>
 				</ol>
 				<br>
 				<!-- END BREADCRUMBS -->
@@ -55,10 +55,10 @@ System.out.println("공지사항의 board : " + board);
 					<div class="row">
 						<div class=col-lg-12>
 							<h1 align="center">
-								<b>FOOD TRUCK</b>
+								<b>공지사항</b>
 							</h1>
 							<p align="center">
-								<b>FOOD TRUCK을 자세히 살펴보세요.</b>
+								<b>BYTRUCK의 새로운 소식을 받아보세요.</b>
 							</p>
 						</div>
 					</div>
