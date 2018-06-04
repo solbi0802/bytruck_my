@@ -1,5 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	String root = request.getContextPath();
+%>
+<head>
+<!--  부트스트랩과 제이쿼리 라이브러리를 사용하기 위한 선언  -->
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<!-- include summernote-ko-KR -->
+<%-- <script src="<%=root%>/dist/lang/summernote-ko-KR.js"></script> --%>
+<!-- include summernote css/js-->
+<link href="<%=root%>/dist/summernote.css" rel="stylesheet">
+<script src="<%=root%>/dist/summernote.js"></script>
+</head>
 <style>
 .board {
 	padding-top: 10%;
@@ -24,20 +42,49 @@
 		<div class="container-fluid">
 			<div class="col-lg-12">
 				<header>
-					<%@include file="/template/header.jsp"%>
+					<jsp:include page="/template/form.jsp" />
 				</header>
 			</div>
 		</div>
 	</div>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 	<script>
 	$(function() {
-		$('form#formwrite').submit(function() {
+		$('.summernote').summernote({ // summernote를 사용하기 위한 선언
+            height: 400,
+       callbacks: { // 콜백을 사용
+                // 이미지를 업로드할 경우 이벤트를 발생
+           onImageUpload: function(files, editor, welEditable) {
+              sendFile(files[0], this);
+          }
+       }
+    });     
+ 		function sendFile(file, editor) {
+            // 파일 전송을 위한 폼생성
+          data = new FormData();
+           data.append("uploadFile", file);
+          // alert(data);
+           $.ajax({ // ajax를 통해 파일 업로드 처리
+               data : data,
+               type : "POST",
+               url : "<%=root%>/adboard/summernote_imageUpload.jsp",
+               cache : false,
+               contentType : false,
+               processData : false,
+               success : function(data) { // 처리가 성공할 경우
+                    // 에디터에 이미지 출력
+                    alert("성공????")   ;
+                  $(editor).summernote('editor.insertImage', data.url);
+               }, 
+               error : function(e) {alert("에러!" + e);}
+           });
+       }
+<%-- 		$('#foodregister').click(function() {
 				$.ajax({
 					url : '<%=root%>/foodtruckwrite.bt',
 					method : 'post',
-					data : $('form').serialize(),
+					data : $('.formwrite').serialize(),
 					success : function(data) {
 						data = data.trim();
 						if (data == '1') { //글쓰기 성공
@@ -50,16 +97,8 @@
 					}
 				});
 				return false;
-			});
+			}); --%>
 		
-		<%-- $('#filefile').submit(function() {
-				$.ajax({
-					url : '<%=root%>/upload.bt',
-					method: 'post',
-					data : 'multipart/form-data';
-				});
-		}); --%>
-
 		$('button#cancel').click(function() {
 				alert("취소하시면 작성하신 글이 사라지게 됩니다. \n 정말 작성 취소하시겠습니까?");
 				location.href="<%=root%>/foodtruck/foodboard.jsp";
@@ -97,13 +136,34 @@
 						<h2 class="panel-title section-heading no-margin">푸드트럭 등록</h2>
 					</div>
 					<div class="panel-body">
-						<form id="formwrite">
+						<form class="formwrite" action="<%=root%>/foodtruckwrite.bt"
+							method="post" enctype="multipart/form-data">
 							<div class="form-horizontal">
 								<div class="form-group">
 									<label class="col-md-2 control-label">제목</label>
 									<div class="col-md-10">
 										<input type="text" class="form-control" name="title"
 											placeholder="제목을 입력하세요.">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-2 control-label">음식종류</label>
+									<div class="col-md-10">
+										<div class="radio">
+											<label> <input type="radio" name="foodtype"
+												value="main">식사류
+											</label>
+										</div>
+										<div class="radio">
+											<label> <input type="radio" name="foodtype"
+												value="desert">간식류
+											</label>
+										</div>
+										<div class="radio">
+											<label> <input type="radio" name="foodtype"
+												value="drink">음료류
+											</label>
+										</div>
 									</div>
 								</div>
 								<div class="form-group">
@@ -116,31 +176,10 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-2 control-label">비밀번호</label>
-									<div class="col-md-10">
-										<input type="password" class="form-control">
-									</div>
-								</div>
-								<div class="form-group">
 									<label class="col-md-2 control-label">상세설명</label>
 									<div class="col-md-10">
-										<textarea class="form-control" name="detail"
+										<textarea class="summernote" name="detail"
 											placeholder="내용을 입력하세요." rows="10"></textarea>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-2 control-label">장소</label>
-									<div class="col-md-10">
-										<select class="form-control">
-											<option value="cheese">서울특별시</option>
-											<option value="tomatoes">광주광역시</option>
-											<option value="mozarella">대구광역시</option>
-											<option value="mushrooms">대전광역시</option>
-											<option value="pepperoni">부산광역시</option>
-											<option value="onions">울산광역시</option>
-											<option value="onions">인천광역시</option>
-										</select><br>
-										<div class="result"></div>
 									</div>
 								</div>
 								<div class="form-group">
@@ -158,33 +197,21 @@
 										</div>
 									</div>
 								</div>
-								<!-- <div class="form-group">
-									<label for="exampleInputFile" class="col-md-2 control-label">첨부파일</label>
-									<div class="col-md-10">
-										<input type="file" id="exampleInputFile">
-										<p class="help-block">
-											<em>첨부파일을 선택하세요.</em>
-										</p>
-									</div>
-								</div> -->
+							<div class="form-group">
+								<label class="col-md-2 control-label">첨부파일</label>
+								<div class="col-md-10">
+									<input type="file" name="file1" value="filefile"><br>
+									<!-- <input type="submit" value="전송"> -->
+								</div>
+							</div>
 							</div>
 							<div
 								class="button-group col-lg-offset-2 col-lg-8 col-lg-offset-2">
 								<button class="btn btn-success col-lg-4 col-lg-offset-1"
-									type="submit">등록</button>
-								<button class="btn btn-danger col-lg-4 col-lg-offset-1" type="button"
-										id="cancel">취소</button>
+									id="foodregister" type="submit">등록</button>
+								<button class="btn btn-danger col-lg-4 col-lg-offset-1"
+									type="button" id="cancel">취소</button>
 							</div>
-						</form>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-2 control-label">첨부파일</label>
-					<div class="col-md-10">
-						<form action="<%=root%>/upload.bt" method="post"
-							enctype="multipart/form-data">
-							<input type="file" name="file1"><br> <input
-								type="submit" value="전송">
 						</form>
 					</div>
 				</div>

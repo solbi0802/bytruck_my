@@ -69,7 +69,7 @@
 							<tbody>
 								<tr>
 									<td>10</td>
-									<td><a href="#">안성휴게소 보다 맛있는 소떡소떡</a></td>
+									<td><a href="<%=root%>/foodtruckdetail.bt?num=2">안성휴게소 보다 맛있는 소떡소떡</a></td>
 									<td>id10</td>
 									<td>2018.05.11</td>
 								</tr>

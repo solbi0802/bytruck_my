@@ -1,10 +1,10 @@
+<%@page import="vo.Foodtruck_Location"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <head>
 <title>foodtruck.jsp</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
+
 <style>
 .board {
 	padding-top: 10%;
@@ -25,6 +25,7 @@
 			</div>
 		</div>
 	</div>
+	</script>
 	<div class="board">
 		<div class="row">
 			<div class="container">
@@ -75,7 +76,10 @@
 					</div>
 				</div>
 				<!-- tab Header -->
-				<div class="row">
+				<div class="foodsearch">
+					<jsp:include page="foodsearch.jsp"/>
+				</div>
+<!-- 				<div class="row">
 					<div class="container-fluid">
 						<div class="foodtype">
 							<ul class="nav nav-tabs" role="tablist">
@@ -96,344 +100,23 @@
 							</ul>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- end tab Header -->
-				<!-- tab-content -->
-				<div class="tab-content">
-					<div class="tab-pane fade in active" id="main">
-						<div class="row">
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="foodtruckdetail.jsp"><img
-										src="<%=root%>/images/food.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">덕복희</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/food1.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">햄벅한 버거</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/food.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">큐브
-												스테이크</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/food1.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">그릴드 치킨</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/food1.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">덕복희</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/food.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">덕복희</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/food1.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">덕복희</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/food.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">덕복희</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="desert">
-						<div class="row">
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/desert1.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">츄파츄러스</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/desert1.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">츄파츄러스</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/desert1.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">츄파츄러스</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/desert1.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">츄파츄러스</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/desert2.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">와플플러스</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/desert2.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">와플플러스</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/desert2.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">와플플러스</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/desert2.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">와플플러스</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="drink">
-						<div class="row">
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/drink2.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">레몬에이드</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/drink2.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">레몬에이드</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/drink2.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">레몬에이드</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/drink2.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">레몬에이드</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/drink1.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">아이스
-												아메리카노</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/drink1.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">아이스
-												아메리카노</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/drink1.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">아이스
-												아메리카노</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="product-item">
-									<a href="<%=root%>/foodtruck/foodtruckdetail.jsp"><img
-										src="<%=root%>/images/drink1.PNG" class="img-rounded"
-										alt="Product Item" height="220" width="250"></a>
-									<div class="info">
-										<h3 class="title">
-											<a href="<%=root%>/foodtruck/foodtruckdetail.jsp">아이스
-												아메리카노</a>
-										</h3>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="tab-pane fade in" id="dropdown1">
-						<h4>서울</h4>
-						<p>서울에서 파는 음식들입니당</p>
-					</div>
-					<div class="tab-pane fade in" id="dropdown2">
-						<h4>경기도</h4>
-						<p>경기도에서 파는 음식들입니당</p>
-					</div>
-					<div class="tab-pane fade in" id="dropdown3">
-						<h4>대구</h4>
-						<p>대구에서 파는 음식들입니당</p>
-					</div>
-					<div class="tab-pane fade in" id="dropdown4">
-						<h4>부산</h4>
-						<p>부산에서 파는 음식들입니당</p>
-					</div>
+				<br>
+				<div class="foodlist">
+				
 				</div>
-				<!-- end tab-content -->
-			</div>
-			<div class="col=lg-2 col-lg-offset-5">
-				<ul class="pagination">
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-				</ul>
 			</div>
 		</div>
+	</div>
+	<div class="text-center">
+		<ul class="pagination">
+			<li class="active"><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+		</ul>
 	</div>
 	<div class="foot">
 		<div class="row">

@@ -23,7 +23,8 @@ public class BoardListServlet extends HttpServlet {
     }
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String page = request.getParameter("page");		
+		String page = request.getParameter("page");	
+		
 		int intPage = 1;
 		
 		if(page != null) {
@@ -51,13 +52,10 @@ public class BoardListServlet extends HttpServlet {
 			request.setAttribute("PageBean", pb);
 			System.out.println(pb.getList());
 			
-
-			
 		}catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("result", e.getMessage());
 		}
-				
 		
 			RequestDispatcher rd;
 			String forwardURL = "brand/notice.jsp";
@@ -65,7 +63,6 @@ public class BoardListServlet extends HttpServlet {
 			rd.forward(request, response);
 	}
 }
-
 
 
 
