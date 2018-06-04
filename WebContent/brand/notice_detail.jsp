@@ -26,7 +26,6 @@ a:hover {
 <body>
 <%
 Board board = (Board)request.getAttribute("board");
-System.out.println("공지사항의 board : " + board);
 %>
 	<div class="row">
 		<div class="container-fluid">

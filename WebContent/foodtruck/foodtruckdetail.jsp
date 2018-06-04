@@ -22,7 +22,7 @@ a:hover {
 </head>
 <%
 Foodtruck_Location fl = (Foodtruck_Location)request.getAttribute("fl");
-System.out.println("공지사항의 board : " +fl);
+System.out.println("푸드트럭 board : " +fl);
 %>
 <body>
 	<div class="row">
@@ -70,7 +70,6 @@ System.out.println("공지사항의 board : " +fl);
 						<div class="form-horizontal">
 							<div class="form-group">
 								<div class="col-md-12" align="center">
-									<img src="<%=root%>/images/foodtruck3.PNG">
 								</div>
 							</div>
 							<div class="form-group">
@@ -81,7 +80,7 @@ System.out.println("공지사항의 board : " +fl);
 							<div class="form-group">
 								<div class="col-md-12" align="center">
 									<h2>
-										<a href="<%=root%>/foodtruck/foodtruck_location.jsp">위치가
+										<a href="<%=root%>/course/truckviewmap.jsp">위치가
 											궁금하신가요?</a>
 									</h2>
 								</div>

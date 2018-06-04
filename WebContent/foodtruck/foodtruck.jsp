@@ -102,8 +102,10 @@
 				</div> -->
 				<!-- end tab Header -->
 				<br>
-				<div class="foodlist" style="cursor:pointer" 
-					 onclick ="window.location.href='<%=root%>/foodtruckdetail.bt?num=2';">
+				<%-- <div class="foodlist" style="cursor:pointer" 
+					 onclick ="window.location.href='<%=root%>/foodtruckdetail.bt?num=2';"> --%>
+				<div class="foodlist" style="cursor:pointer">
+					 <a href="<%=root%>/foodtruckdetail.bt?num=<%=no%>"></a>
 				</div>
 			</div>
 		</div>
