@@ -88,21 +88,38 @@ $(function(){
          
       </tr>
     
-    
+    <%--  
     <p:set var="list" value="${pb.list}"/>
 	<p:forEach var="b" items="${list}">
 
 	
- 	 <%-- <p:forEach begin="1" end="${b.level}">▷</p:forEach> --%>
+ 	 <p:forEach begin="1" end="${b.level}">▷</p:forEach> 
  	 
- 	  <tr>      		
+ 	 <tr>      		
         <td>${b.no}</td>
-        <td> ${b.title}</td>
+        <td> ${b.title}
+        <a href="<%=root%>/boarddetail.bt?num=${b.no}&type=1"></a>
+        </td>
         <td>${b.posted}</td>
         <td> ${b.views}</td>		 
-      </tr>
+      </tr>       
+      </p:forEach>--%> 
       
-      </p:forEach>
+      <tr>      		
+        <td>3</td>
+        <td> <a href="<%=root%>/boarddetail.bt?num=3&type=1">테스트중</a>
+        </td>
+        <td>2018.06.04</td>
+        <td>11</td>		 
+      </tr>   
+      
+      <tr>      		
+        <td>2</td>
+        <td> <a href="<%=root%>/boarddetail.bt?num=2&type=1">되나 안되나</a>
+        </td>
+        <td>2018.06.04</td>
+        <td>11</td>		 
+      </tr>    
      </table>
      </div> 
      </div>
