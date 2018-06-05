@@ -8,6 +8,10 @@
 <script src="../js/bootstrap.min.js"></script>
 <%
 Event event = (Event)request.getAttribute("event");
+/* if(imgpath != null){
+    int lastIndex = imgpath.lastIndexOf("\\");
+    imgpath = imgpath.substring(lastIndex+1);
+} */
 %>
 <style>
 .board {
@@ -69,7 +73,8 @@ a:hover {
 						<div class="form-horizontal">
 							<div class="form-group">
 								<div class="col-md-12" align="center">
-									<img src="<%=root%>/images/detail.jpg">
+									<p><%-- <img src="<%=root%>/upload/<%=imgpath%>" class="img-rounded"
+									alt="NO IMAGE" height="300" width="300"></img> --%></p>
 								</div>
 							</div>
 							<div class="form-group">
