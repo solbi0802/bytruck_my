@@ -1,3 +1,4 @@
+<%@page import="vo.Event"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <head>
@@ -5,6 +6,9 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<%
+Event event = (Event)request.getAttribute("event");
+%>
 <style>
 .board {
 	padding-top: 10%;
@@ -44,7 +48,7 @@ a:hover {
 				<!-- BASIC INPUT -->
 				<div class="page-header">
 					<div class="row">
-						<div class=col-lg-12">
+						<div class=col-lg-12>
 							<h1 align="center">
 								<b>EVENT</b>
 							</h1>
@@ -56,10 +60,10 @@ a:hover {
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h2 class="panel-title section-heading no-margin">이벤트 제목</h2>
+						<h2 class="panel-title section-heading no-margin">이벤트 제목 ▶ <%=event.getTitle()%></h2>
 					</div>
 					<div class="panel-heading">
-						<h2 class="panel-title section-heading no-margin">이벤트 기간</h2>
+						<h2 class="panel-title section-heading no-margin">이벤트 기간 ▶ <%=event.getEvent_date() %></h2>
 					</div>
 					<div class="panel-body">
 						<div class="form-horizontal">
@@ -70,7 +74,7 @@ a:hover {
 							</div>
 							<div class="form-group">
 								<div class="col-md-12" align="center">
-									<p>상세설명</p>
+									<p><%=event.getDetail()%></p>
 								</div>
 							</div>
 							<div class="form-group">

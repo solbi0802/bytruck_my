@@ -19,4 +19,8 @@ public class EventService {
 	public List<Event>findEvent() throws Exception{
 		return dao.selectEvent();
 	}
+	
+	public Event findDetail(int bNum) throws Exception {
+		return dao.selectDetail(bNum);
+	}
 }
