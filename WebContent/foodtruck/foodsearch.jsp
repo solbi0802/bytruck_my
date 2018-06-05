@@ -24,7 +24,7 @@ $(function(){
                 if(data != null) {
                    var $divObj = $('div.foodlist');
                   $divObj.html(data.trim());
-                  } 
+                } 
 	        }
 			
 		}); 
@@ -39,7 +39,13 @@ $(function(){
 					<li><a href="#main" id="main" role="tab" data-toggle="tab">식사류</a></li>
 					<li ><a href="#desert" id="desert" role="tab" data-toggle="tab">간식류</a></li>
 					<li><a href="#drink" id="drink" role="tab" data-toggle="tab">음료류</a></li>
-				</ul>
+<%--   				<div>
+				<%String userInfo = (String) session.getAttribute("loginInfo_type");
+				if(userInfo.equals("TR")){%>
+					<a class="btn btn-success pull-right"
+						href="<%=root%>/foodtruck/foodform.jsp">푸드트럭 등록</a><%} %>
+				</div> --%> 
+			</ul>
 			</div>
 		</div>
 </div>

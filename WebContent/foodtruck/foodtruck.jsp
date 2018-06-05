@@ -36,7 +36,7 @@
 				</ol>
 				<div class="page-header">
 					<div class="row">
-						<div class=col-lg-12>
+						<div class=col-lg-12">
 							<h1 align="center">
 								<b>FOOD TRUCK</b>
 							</h1>
@@ -78,34 +78,8 @@
 				<div class="foodsearch">
 					<jsp:include page="foodsearch.jsp"/>
 				</div>
-<!-- 				<div class="row">
-					<div class="container-fluid">
-						<div class="foodtype">
-							<ul class="nav nav-tabs" role="tablist">
-								<li class="active"><a href="#main" role="tab"
-									data-toggle="tab">식사류</a></li>
-								<li><a href="#desert" role="tab" data-toggle="tab">간식류</a></li>
-								<li><a href="#drink" role="tab" data-toggle="tab">음료류</a></li>
-								<li class="dropdown"><a href="#" id="myTabDrop1"
-									class="dropdown-toggle" data-toggle="dropdown">지역별 보기 <b
-										class="caret"></b></a>
-									<ul class="dropdown-menu" role="menu"
-										aria-labelledby="myTabDrop1">
-										<li><a href="#dropdown1" tabindex="-1" data-toggle="tab">서울</a></li>
-										<li><a href="#dropdown2" tabindex="-1" data-toggle="tab">경기도</a></li>
-										<li><a href="#dropdown3" tabindex="-1" data-toggle="tab">대구</a></li>
-										<li><a href="#dropdown4" tabindex="-1" data-toggle="tab">부산</a></li>
-									</ul></li>
-							</ul>
-						</div>
-					</div>
-				</div> -->
-				<!-- end tab Header -->
 				<br>
-				<%-- <div class="foodlist" style="cursor:pointer" 
-					 onclick ="window.location.href='<%=root%>/foodtruckdetail.bt?num=2';"> --%>
-				<div class="foodlist" style="cursor:pointer">
-					 <a href="<%=root%>/foodtruckdetail.bt?num=<%=no%>"></a>
+				<div class="foodlist">
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,3 @@
-<%@page import="vo.Advertise"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -34,7 +33,7 @@
 				</ol>
 				<div class="page-header">
 					<div class="row">
-						<div class=col-lg-12>
+						<div class=col-lg-12">
 							<h1 align="center">
 								<b>배너광고 신청</b>
 							</h1>
@@ -68,14 +67,14 @@
 					<tbody>
 						<tr>
 							<td>10</td>
-							<td><a href="<%=root%>/advertisedetail.bt?num=5">바이트럭 홈페이지 리뉴얼</a></td>
+							<td><a href="#">바이트럭 홈페이지 리뉴얼</a></td>
 							<td>관리자</td>
 							<td>2018.05.11</td>
 							<td>1</td>
 						</tr>
 						<tr>
 							<td>9</td>
-							<td><a href="<%=root%>/advertisedetail.bt?num=4">욕설/비방 할시 계정 삭제가 될 수 있으니 유의바랍니다.</a></td>
+							<td><a href="#">욕설/비방 할시 계정 삭제가 될 수 있으니 유의바랍니다.</a></td>
 							<td>관리자</td>
 							<td>2018.05.10</td>
 							<td>11</td>
@@ -142,6 +141,8 @@
 					href="<%=root%>/adboard/ad_form.jsp">글쓰기</a>
 			</div>
 		</div>
+	</div>
+	</div>
 	</div>
 	<div class="text-center">
 		<ul class="pagination">

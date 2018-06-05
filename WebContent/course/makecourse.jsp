@@ -5,6 +5,8 @@
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" 
+   src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=lCSVdReL0yZjRvKWpVR1&submodules=geocoder"></script>
 </head>
 <style>
 .board {
@@ -25,6 +27,21 @@
          </div>
       </div>
    </div>
+   <script>
+   $(function(){
+	  $('button[type=submit]').click(function(){
+		  var x = $('textarea#xlocation').html();
+		  var y = $('textarea#ylocation').html();
+		  var xL=x.split('/');//xL[]:위도배열
+		  var yL=y.split('/');//yL[]:경도배열
+		  
+		    for(var i in xL){
+			  console.log(xL[i] + ", " + yL[i] + "\n");
+		  }  
+		  
+	  });
+   });
+   </script>
    <div class="board">
       <div class="row">
          <div class="container">
@@ -68,11 +85,12 @@
                   </div>
                   <div class="col-sm-10">
                      <div class="col-md-9">
-                        <%@include file="naver.html"%><br>
+                        <%@include file="/course/naver.jsp"%><br>
                         <label>제목 :</label>&nbsp;&nbsp;<input type="text"
-                           class="form-control" required><br> <label>일정
-                           :</label><br>
-                        <textarea class="form-control" rows="8   "></textarea>
+                           class="form-control" required><br> <label>일정 :</label><br>
+                        <textarea class="form-control" rows="8" id="detail"></textarea>
+                        <textarea style="display: none" id="xlocation"></textarea>
+                        <textarea style="display: none" id="ylocation"></textarea>
                         <br> <label><input type="radio" name="optradio">나만보기</label>
                         <label><input type="radio" name="optradio">전체공개</label><br>
                         <button type="submit" class="btn btn-default"

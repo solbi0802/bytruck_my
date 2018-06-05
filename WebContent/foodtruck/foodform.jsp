@@ -113,7 +113,6 @@
 					<li><a href="<%=root%>/index.jsp" title="Home"><i
 							class="fa fa-home"></i></a></li>
 					<li><a href="<%=root%>/foodtruck/foodtruck.jsp">푸드트럭 소개</a></li>
-					<li><a href="<%=root%>/foodtruck/foodboard.jsp">푸드트럭 등록</a></li>
 					<li class="active">푸드트럭 작성</li>
 				</ol>
 				<br>
@@ -136,12 +135,12 @@
 						<h2 class="panel-title section-heading no-margin">푸드트럭 등록</h2>
 					</div>
 					<div class="panel-body">
-						<form class="formwrite" action="<%=root%>/foodtruckwrite.bt"
+						<form class="formwrite" action="<%=root%>/foodtruckwrite.bt?id=<%=session.getAttribute("loginInfo") %>"
 							method="post" enctype="multipart/form-data">
 							<div class="form-horizontal">
 								<div class="form-group">
-									<label class="col-md-2 control-label">제목</label>
-									<div class="col-md-10">
+									<label class="col-md-1 control-label">제목</label>
+									<div class="col-md-11">
 										<input type="text" class="form-control" name="title"
 											placeholder="제목을 입력하세요.">
 									</div>
@@ -180,6 +179,16 @@
 									<div class="col-md-10">
 										<textarea class="summernote" name="detail"
 											placeholder="내용을 입력하세요." rows="10"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-2 control-label">위치</label>
+									<div class="col-md-10">
+										<%@include file="../course/location.jsp"%>
+										<textarea style="display: none" id="xlocation"
+											name="xlocation"></textarea>
+										<textarea style="display: none" id="ylocation"
+											name="ylocation"></textarea>
 									</div>
 								</div>
 								<div class="form-group">

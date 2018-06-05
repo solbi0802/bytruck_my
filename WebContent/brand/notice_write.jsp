@@ -38,6 +38,7 @@
 					data = data.trim();
 					if (data == '1') { //글쓰기 성공
 						alert('글쓰기 성공');
+						location.href="<%=root%>/brand/notice.jsp";
 						/* var $triggerObj = $("nav>ul li.board");
 						$triggerObj.trigger('click'); */
 					} else if (data == '-1') { //글쓰기 실패

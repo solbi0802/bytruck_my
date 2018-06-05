@@ -16,6 +16,7 @@ List<Foodtruck_Location>list = (List)request.getAttribute("list");
 for(int i=0; i<list.size(); i++){
 	Foodtruck_Location fc =  list.get(i);
 	String imgpath = fc.getImgpath();
+	int no = fc.getNo();
 	String title = fc.getTitle();
 	
     if(imgpath != null){
@@ -25,10 +26,12 @@ for(int i=0; i<list.size(); i++){
 %>	
  <div class="col-lg-3">
   <div class="product-item">
+  	<a href="<%=root%>/foodtruckdetail.bt?num=<%=no%>">
   	<img src="<%=root%>/upload/<%=imgpath%>" class="img-rounded"
 				alt="NO IMAGE" height="220" width="250"></img>
+	</a>
 	<div class="info">
-  		<h3 class="title"><%=title%></h3>
+  		<h3 class="title"><a href="<%=root%>/foodtruckdetail.bt?num=<%=no%>"><%=title%></a></h3>
   	</div>
   </div>
  </div> 		

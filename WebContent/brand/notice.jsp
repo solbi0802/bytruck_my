@@ -3,15 +3,6 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="p" uri="http://java.sun.com/jsp/jstl/core"%>
-<p:set var="pb" value="${requestScope.PageBean }"/>	
-<%@ page buffer="100kb" %>
-
-<%
-	String root = request.getContextPath();
-%>	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="<%=root%>/js/bootstrap.min.js"></script>
 <style>
 .board {
 	padding-top: 10%;
@@ -20,26 +11,26 @@
 	margin-top: 0;
 }
 </style>
-
 <title>notice.jsp</title>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<div class="row">
 		<div class="container-fluid">
 			<div class="col-lg-12">
 				<header>
-				<jsp:include page ="/template/header.jsp"/>
+					<%@include file="/template/header.jsp"%>
 				</header>
 			</div>
 		</div>
 	</div>
 	<script>
  $(function(){
-	 <%-- $('.detail').click(function(){
+	 <%-- $('#detail').click(function(){
 		 console.log("클릭");
 			$.ajax({
 				method:'POST',
 				url:'<%=root%>/boarddetail.bt',
-				data: num,
+				data:{num:'2'},
 				success: function(data){
 					alert("성공");
 					$('.board').html(data);
@@ -61,7 +52,7 @@
 				<!-- END BREADCRUMBS -->
 						<div class="page-header">
 							<div class="row">
-								<div class=col-lg-12>
+								<div class=col-lg-12">
 									<h1 align="center">
 										<b>공지사항</b>
 									</h1>
@@ -93,26 +84,39 @@
 								</tr>
 								
 							<tbody>
+							<%-- <%
+							 for(int i=0; i < list.size(); i++) {
+							 Board blist = list.get(i);
+							 int no = blist.getNo();
+							 String title = blist.getTitle();
+							 Date posted = blist.getPosted();
+							 %>
 							<tr>
-									<td>
-									2
-									</td>
-									<td><a href="<%=root%>/boarddetail.bt?num=2&type=0">바이트럭 홈페이지 리뉴얼</a>
+							 	<td><%=no%></td>
+							 	<td><%=title%>></td>
+							 	<td>관리자</td>
+							 	<td><%=posted%></td>
+								<td>1</td>
+							 </tr>
+							 <% } %> --%>
+							<tr>
+									<td>2</td>
+									<td><a href="<%=root%>/boarddetail.bt?num=2&type=0" id = detail >바이트럭 홈페이지 리뉴얼</a>
 									</td>
 									<td>관리자</td>
 									<td>2018.05.11</td>
 									<td>1</td>
 								</tr>
 								<tr>
-									<td>3</td>
-									<td><a href="<%=root%>/boarddetail.bt?num=3&type=0">욕설/비방 할시 계정 삭제가 될 수 있으니 유의바랍니다.</a></td>
+									<td>9</td>
+									<td><a href="#">욕설/비방 할시 계정 삭제가 될 수 있으니 유의바랍니다.</a></td>
 									<td>관리자</td>
 									<td>2018.05.10</td>
 									<td>11</td>
 								</tr>
 								<tr>
-									<td>4</td>
-									<td><a href="<%=root%>/boarddetail.bt?num=4&type=0">좋아요 기능 많은 이용 부탁드립니다.</a></td>
+									<td>8</td>
+									<td><a href="#">좋아요 기능 많은 이용 부탁드립니다.</a></td>
 									<td>관리자</td>
 									<td>2018.05.09</td>
 									<td>29</td>
@@ -128,30 +132,26 @@
 								</c:forEach> --%>
 							</tbody>
 						</table>
-						<a class="btn btn-success pull-right"
-							href="<%=root%>/brand/notice_write.jsp">글쓰기</a>
+						<%String userInfo = (String) session.getAttribute("loginInfo_type");
+								if(userInfo.equals("AD")){%>
+							<a class="btn btn-success pull-right" href="<%=root%>/brand/notice_write.jsp">글쓰기</a><%} %>
 					</div>
 				</div>
 			</div>
 	<div class="text-center">
 		<ul class="pagination">
-		<div class="pagination" style="width: 400px;margin-left: 30%;">
-		<p:set var="startPage" value="${pb.startPage }"/>
-		<p:set var="endPage" value="${pb.endPage }"/>
-	
-		<p:if test="${startPage > 1 }">
-			 <a href="#">&laquo;</a>
-		</p:if>
-		<!-- 페이지 이동 처리, 클릭 이벤트 처리만 하면 된다. -->
-		<p:forEach begin="${startPage}" end="${endPage}" var="i">
-			 <a href="#">${i}</a>
-		</p:forEach>
-		
-		<p:if test="${endPage < pb.totalPage }">
-			<a href="#">&raquo;</a>
-		</p:if>
-	</div>
-	</ul>
+			<%-- <c:set var="startPage" value="${pb.startPage}"/>
+			<c:set var="endPage" value="${pb.endPage}"/>
+			<c:if test="${startPage > 1}">
+			<a href="#">&laquo;</a>
+			</c:if>
+			<c:forEach begin="${startPage}" end="${endPage}" var = "i">
+				<a href="#">${i}</a>
+			</c:forEach>
+			<c:if test="${endPage < pb.totalPage}">
+				<a href="#">&raquo;</a>
+			</c:if>	 --%>
+		</ul>
 	</div>
 	<!-- END MAIN -->
 	<!-- FOOTER -->
