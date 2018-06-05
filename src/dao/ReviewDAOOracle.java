@@ -15,8 +15,8 @@ public class ReviewDAOOracle implements ReviewDAO {
 
 	@Override
 	public Review selectDetail(int rnum) throws Exception {
-		Review r = new Review();
 		
-		return r;
+		
+		
 	}
 }
