@@ -38,12 +38,7 @@ public class Users {
 		this.bussiness_number = bussiness_number;
 		this.type = type;
 	}
-	
-	public Users(String type) {
-		super();
-		this.type = type;
-	}
-	
+
 	public String getUser_id() {
 		return user_id;
 	}
@@ -106,12 +101,5 @@ public class Users {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	@Override
-	public String toString() {
-		return "Users [user_id=" + user_id + ", user_pwd=" + user_pwd + ", name=" + name + ", birthday=" + birthday
-				+ ", phone_number=" + phone_number + ", email=" + email + ", bussiness_number=" + bussiness_number
-				+ ", type=" + type + "]";
 	}
 }

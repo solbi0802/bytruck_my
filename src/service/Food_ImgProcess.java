@@ -21,7 +21,7 @@ public class Food_ImgProcess {
 	public Food_ImgProcess(HttpServletRequest request) {
 		this.request = request;
 	}
-
+	
 	public Foodtruck_Location upload() {
 		
 		Foodtruck_Location fc = new Foodtruck_Location();
@@ -41,7 +41,7 @@ public class Food_ImgProcess {
 			}
 			for (int i = 0; i < fileItemList.size(); i++) {
 				FileItem fileItem = (FileItem) fileItemList.get(i);
-				if (fileItem.isFormField()) { //isFormField()는 텍스인지 판단
+				if (fileItem.isFormField()) { //isFormField()는 텍스트인지 판단
 					String name = fileItem.getFieldName(); //양식의 이름 뽑아서 저장
 					String value = null;
 					try {
@@ -59,7 +59,11 @@ public class Food_ImgProcess {
 						fc.setDetail(value);
 					} else if (name.equals("powerlink")){
 						fc.setPoweryn(value);
-					}						
+					} else if (name.equals("xlocation")) {
+						fc.setLatitude(value);
+					} else if (name.equals("ylocation")) {
+						fc.setLongtitude(value);
+					}
 					
 				} else {
 					String name = fileItem.getFieldName();

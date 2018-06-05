@@ -14,8 +14,20 @@ public class FoodtruckService {
 		dao.insert(ft);
 	}
 
-	public void foodtruckwrite(Foodtruck_Location fc) throws Exception{ //푸드트럭 글쓰기 등록
+	public void foodtruckwrite(Foodtruck_Location fc) throws Exception{
 		dao.insertfoodtruck(fc);
+	}
+
+	public Foodtruck finduser(String id) throws Exception{
+		Foodtruck ft = dao.selectById(id);
+		if (ft != null) {//회원이 존재할 경우
+			return ft;
+		}
+		return null;
+	}
+
+	public void update(Foodtruck ft) throws Exception{
+		dao.update(ft);
 	}
 	
 	public List<Foodtruck_Location> findByType(String type) throws Exception{
@@ -27,6 +39,6 @@ public class FoodtruckService {
 	}
 	
 	public Foodtruck_Location findDetail(int fNum) throws Exception {
-		return dao.selectDetail(fNum);
+	      return dao.selectDetail(fNum);
 	}
 }

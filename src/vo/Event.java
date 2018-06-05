@@ -1,26 +1,41 @@
 package vo;
 
-import java.sql.Date;
-
 public class Event {
 	private int no;
 	private String user_id;
 	private String title;
 	private String detail;
-	private Date event_date;
+	private String event_date;
+	private String imgpath;
 	
 	public Event() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Event(String title, String imgpath) {
+		super();
+		this.title = title;
+		this.imgpath = imgpath;
+	}
 
-	public Event(int no, String user_id, String title, String detail, Date event_date) {
+	public Event(int no, String user_id, String title, String detail, String event_date) {
 		super();
 		this.no = no;
 		this.user_id = user_id;
 		this.title = title;
 		this.detail = detail;
 		this.event_date = event_date;
+	}
+	
+	public Event(int no, String user_id, String title, String detail, String event_date, String imgpath) {
+		super();
+		this.no = no;
+		this.user_id = user_id;
+		this.title = title;
+		this.detail = detail;
+		this.event_date = event_date;
+		this.imgpath = imgpath;
 	}
 
 	public int getNo() {
@@ -55,17 +70,28 @@ public class Event {
 		this.detail = detail;
 	}
 
-	public Date getEvent_date() {
+	public String getEvent_date() {
 		return event_date;
 	}
 
-	public void setEvent_date(Date event_date) {
+	public void setEvent_date(String event_date) {
 		this.event_date = event_date;
+	}
+
+	public String getImgpath() {
+		return imgpath;
+	}
+
+	public void setImgpath(String imgpath) {
+		this.imgpath = imgpath;
 	}
 
 	@Override
 	public String toString() {
 		return "Event [no=" + no + ", user_id=" + user_id + ", title=" + title + ", detail=" + detail + ", event_date="
-				+ event_date + "]";
+				+ event_date + ", imgpath=" + imgpath + "]";
 	}
+	
+	
+
 }

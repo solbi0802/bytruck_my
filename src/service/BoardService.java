@@ -17,7 +17,7 @@ public class BoardService {
 	}
 	
 	public List<Board> findAll(int page) throws Exception{
-		return dao.getBoardList(page);
+		return dao.selectAll(page);
 	}
 	
 	public Board findDetail(int boardNo, int btype) throws Exception {
@@ -29,7 +29,10 @@ public class BoardService {
 	};
 	
 	public void Delete(int boardNum) throws Exception{
-		//System.out.print(boardNum);
 		dao.deleteBoard(boardNum);
 	};
+	
+	public void modify(Board board) throws Exception{
+		dao.updateboard(board);
+	}
 }

@@ -1,9 +1,6 @@
 package control;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,23 +8,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.TimelineService;
-import vo.Chatting;
+import service.FoodtruckService;
+import vo.Foodtruck;
 
-public class TimelineViewServlet extends HttpServlet {
+public class UserInfoViewBusiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private TimelineService service = new TimelineService(); 
-	
+	private FoodtruckService service = new FoodtruckService();
+       
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		String id = request.getParameter("id");
+		String forwardURL = "";
+		
 		try {
-			List<Chatting> list = service.selectAll();
-			request.setAttribute("result", list);
+			Foodtruck result = service.finduser(id);
+			if (result!=null) { // 회원 정보찾기 성공:1
+				request.setAttribute("foodtruck", result);	
+			}
 		} catch (Exception e) {
 			request.setAttribute("result", e.getMessage());
 		}
-		String forwardURL = "chatting/chatresult.jsp";
+		forwardURL = "mypage/mypageBussiness.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(forwardURL);
 		rd.forward(request, response);	
 	}
+
 }

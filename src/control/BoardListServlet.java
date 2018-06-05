@@ -23,12 +23,11 @@ public class BoardListServlet extends HttpServlet {
     }
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String page = request.getParameter("page");	
-		
-		int intPage = 1;
-		
+		String page = request.getParameter("page");
+		int intPage=1;
 		if(page != null) {
-			intPage = Integer.parseInt(page);	
+			intPage = Integer.parseInt(page);
+			
 		}
 		try {
 			int totalCount = service.findCount();
@@ -49,20 +48,23 @@ public class BoardListServlet extends HttpServlet {
 			pb.setList(list);
 			pb.setStartPage(startPage);
 			pb.setTotalPage(totalPage);
+			
 			request.setAttribute("PageBean", pb);
-			System.out.println(pb.getList());
+			
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("result", e.getMessage());
 		}
+		RequestDispatcher rd;
+		String forwardURL = "qna.jsp";
+		rd = request.getRequestDispatcher(forwardURL);
+		rd.forward(request, response);
 		
-			RequestDispatcher rd;
-			String forwardURL = "brand/notice.jsp";
-			rd = request.getRequestDispatcher(forwardURL);
-			rd.forward(request, response);
 	}
+
 }
+
 
 
 

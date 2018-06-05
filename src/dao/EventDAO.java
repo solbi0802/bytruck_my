@@ -4,5 +4,7 @@ import java.util.List;
 import vo.Event;
 
 public interface EventDAO {
+	public void insertevent(Event ev) throws Exception;
+	public List<Event> selectAll() throws Exception;
 	public List<Event>selectEvent() throws Exception;
 }
