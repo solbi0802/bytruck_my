@@ -52,7 +52,7 @@
 				<!-- END BREADCRUMBS -->
 						<div class="page-header">
 							<div class="row">
-								<div class=col-lg-12">
+								<div class=col-lg-12>
 									<h1 align="center">
 										<b>공지사항</b>
 									</h1>

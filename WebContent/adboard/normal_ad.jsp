@@ -67,7 +67,7 @@
 					<tbody>
 						<tr>
 							<td>10</td>
-							<td><a href="#">바이트럭 홈페이지 리뉴얼</a></td>
+							<td><a href="<%=root%>/advertisedetail.bt?num=1">바이트럭 홈페이지 리뉴얼</a></td>
 							<td>관리자</td>
 							<td>2018.05.11</td>
 							<td>1</td>
