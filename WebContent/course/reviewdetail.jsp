@@ -1,3 +1,4 @@
+<%@page import="vo.Review"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <head>
@@ -6,6 +7,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 </head>
+<%
+Review review = (Review)request.getAttribute("review");
+%>
 <style>
 .board {
 	padding-top: 10%;
@@ -37,7 +41,7 @@
 				</ol>
 				<div class="page-header">
 					<div class="row">
-						<div class=col-lg-12">
+						<div class=col-lg-12>
 							<h1 align="center">
 								<b>COURCE</b>
 							</h1>
@@ -54,16 +58,18 @@
 						<div class="col-sm-10">
 							<div class="col-md-9">
 								<%@include file="naver.jsp"%><br>
-								<label>제목 :</label>&nbsp;&nbsp;<input type="text"
-									class="form-control" required><br> <label>일정
-									:</label><br>
-								<textarea class="form-control" rows="8	"></textarea><br> 
+								<label>제목</label>&nbsp;&nbsp;<input type="text"
+									class="form-control" required readonly value=<%=review.getTitle()%>><br>
+								<label>게시일</label>&nbsp;&nbsp;<input type="text"
+									class="form-control" required readonly value=<%=review.getPosted()%>><br>
+								<label>여행일자</label>&nbsp;&nbsp;<input type="text"
+									class="form-control" required readonly value=<%=review.getTrip_date()%>><br>		
+								<label>일정</label><br>
+								<textarea class="form-control" rows="8" readonly><%=review.getDetail()%></textarea><br> 
 								<a href="viewcourse.jsp"><button type="submit" class="btn btn-default"
-									style="margin: 10px auto 0; display: block; width: 150px; font-weight: bold; padding: 0; line-height: 32px;">뒤로가기</button></a>
+									style="margin: 10px auto 0; display: block; width: 150px; font-weight: bold; padding: 0; line-height: 32px;">뒤로가기</button></a>	
 							</div>
-							<div class="col-md-3">
-								<img src="<%=root%>/images/weather.png" alt="Weather"
-									width="200" height="250"><br> <br>
+							<div class="col-md-3 col-md-9" >
 								<%@include file="/template/top123.jsp"%>
 							</div>
 						</div>
@@ -72,6 +78,7 @@
 			</div>
 		</div>
 	</div>
+	<br>
 	<div class="foot">
 		<div class="row">
 			<div class="container-fluid">

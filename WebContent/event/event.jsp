@@ -41,7 +41,7 @@
 	<div class="container">
 		<div class="page-header">
 			<div class="row">
-				<div class=col-lg-12">
+				<div class=col-lg-12>
 					<h1 align="center">
 						<b>EVENT</b>
 					</h1>
@@ -74,7 +74,7 @@
 						<div class="overlay"></div>
 						<div class="info">
 							<h4 class="title">이벤트1</h4>
-							<a href="<%=root%>/eventdetail.bt?num=0" class="btn">자세히 보기</a>
+							<a href="<%=root%>/eventdetail.bt?num=1" class="btn">자세히 보기</a>
 						</div>
 						<div class="media-wrapper">
 							<img src="<%=root%>/images/event1.PNG" height="300" width="250">

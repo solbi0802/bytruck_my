@@ -1,5 +1,7 @@
 package vo;
 
+import java.sql.Date;
+
 public class Event {
 	private int no;
 	private String user_id;
@@ -7,6 +9,7 @@ public class Event {
 	private String detail;
 	private String event_date;
 	private String imgpath;
+	private Date date;
 	
 	public Event() {
 		super();
@@ -36,6 +39,15 @@ public class Event {
 		this.detail = detail;
 		this.event_date = event_date;
 		this.imgpath = imgpath;
+	}
+	
+	public Event(int no, String user_id, String title, String detail, Date date) {
+		super();
+		this.no = no;
+		this.user_id = user_id;
+		this.title = title;
+		this.detail = detail;
+		this.date = date;
 	}
 
 	public int getNo() {
@@ -91,7 +103,4 @@ public class Event {
 		return "Event [no=" + no + ", user_id=" + user_id + ", title=" + title + ", detail=" + detail + ", event_date="
 				+ event_date + ", imgpath=" + imgpath + "]";
 	}
-	
-	
-
 }

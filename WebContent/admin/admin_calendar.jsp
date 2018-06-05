@@ -45,22 +45,18 @@ $(document).ready(function() {
                       $.each(data.calendar, function(index,cal){
                     events.push({
                                 title: cal.title,
-                                start: cal.start,
-                                description: 'This is a cool event',
-                                /* description: "[일정상세] "+contents, */
+                                start :moment(cal.start, "yyyy.mm.dd"),
+                       			/* start: moment(cal.start).format('RRRR.mm.dd'),  */
                                 contents: cal.detail,
                                 color : "#f49542"
                               });
                     });
                  callback(events);
-                       
                     }
                   });
            },
           eventRender : function(event, element) {
  	   $(element).tooltip({title: event.title});
- 	  /*  element[0].title = event.title; */
- 	  /*  element[1].detail = event.detail; */
  	}
 });
 });

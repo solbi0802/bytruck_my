@@ -35,7 +35,7 @@
 				<!-- END BREADCRUMBS -->
 				<div class="page-header">
 					<div class="row">
-						<div class=col-lg-12">
+						<div class=col-lg-12>
 							<h1 align="center">
 								<b>COURCE</b>
 							</h1>
@@ -69,35 +69,35 @@
 					<tbody>
 						<tr>
 							<td>10</td>
-							<td><a href="#">바이트럭 홈페이지 리뉴얼</a></td>
+							<td><a href="<%=root%>/reviewdetail.bt?num=5">바이트럭 홈페이지 리뉴얼</a></td>
 							<td>관리자</td>
 							<td>2018.05.11</td>
 							<td>1</td>
 						</tr>
 						<tr>
 							<td>9</td>
-							<td><a href="#">욕설/비방 할시 계정 삭제가 될 수 있으니 유의바랍니다.</a></td>
+							<td><a href="<%=root%>/reviewdetail.bt?num=4">욕설/비방 할시 계정 삭제가 될 수 있으니 유의바랍니다.</a></td>
 							<td>관리자</td>
 							<td>2018.05.10</td>
 							<td>11</td>
 						</tr>
 						<tr>
 							<td>8</td>
-							<td><a href="#">좋아요 기능 많은 이용 부탁드립니다.</a></td>
+							<td><a href="<%=root%>/reviewdetail.bt?num=3">좋아요 기능 많은 이용 부탁드립니다.</a></td>
 							<td>관리자</td>
 							<td>2018.05.09</td>
 							<td>29</td>
 						</tr>
 						<tr>
 							<td>7</td>
-							<td><a href="#">관심코스 (찜)기능이 추가 되었습니다.</a></td>
+							<td><a href="<%=root%>/reviewdetail.bt?num=2">관심코스 (찜)기능이 추가 되었습니다.</a></td>
 							<td>관리자</td>
 							<td>2018.05.08</td>
 							<td>18</td>
 						</tr>
 						<tr>
 							<td>6</td>
-							<td><a href="#">어린이날 맞이 당일치기 여행 어떠신가요~</a></td>
+							<td><a href="<%=root%>/reviewdetail.bt?num=1">어린이날 맞이 당일치기 여행 어떠신가요~</a></td>
 							<td>관리자</td>
 							<td>2018.05.05</td>
 							<td>52</td>

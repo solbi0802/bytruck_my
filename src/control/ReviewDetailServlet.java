@@ -34,6 +34,7 @@ public class ReviewDetailServlet extends HttpServlet {
 		String num = request.getParameter("num");
 		int bnum = Integer.parseInt(num);
 		request.setAttribute("bnum", bnum);
+		System.out.println(num);
 		try {
 			Review review = service.findDetail(bnum);
 			request.setAttribute("review", review);
