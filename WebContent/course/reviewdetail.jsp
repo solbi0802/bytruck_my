@@ -66,7 +66,7 @@ Review review = (Review)request.getAttribute("review");
 									class="form-control" required readonly value=<%=review.getTrip_date()%>><br>		
 								<label>일정</label><br>
 								<textarea class="form-control" rows="8" readonly><%=review.getDetail()%></textarea><br> 
-								<a href="viewcourse.jsp"><button type="submit" class="btn btn-default"
+								<a href="<%=root%>/course/reviewboard.jsp"><button type="submit" class="btn btn-default"
 									style="margin: 10px auto 0; display: block; width: 150px; font-weight: bold; padding: 0; line-height: 32px;">뒤로가기</button></a>	
 							</div>
 							<div class="col-md-3 col-md-9" >
