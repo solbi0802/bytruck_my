@@ -8,7 +8,7 @@
 	<c:if test="${status.index > 0}">,</c:if>
 	{
 	"title":"${i.title}",
-	"start":"${i.event_date}",
+	"start":"${i.date}",
 	"detail":"${i.detail}"
 	}
 </c:forEach>

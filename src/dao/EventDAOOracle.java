@@ -61,7 +61,7 @@ public class EventDAOOracle implements EventDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String selectAllSQL = "select no, user_id, title, detail, to_date(event_date,'RRRR.mm.dd') edate "
+		String selectAllSQL = "select title, detail, to_date(event_date,'RRRR-MM-DD') edate "
 							  +" from event";
 		List<Event> list = new ArrayList<>();
 
@@ -69,16 +69,11 @@ public class EventDAOOracle implements EventDAO {
 			con = sql.MyConnection.getConnection();
 			pstmt = con.prepareStatement(selectAllSQL);
 			rs = pstmt.executeQuery();
-			
-			 // Date타입으로 변경하기 위해서 날짜 형식으로 변경
-			/*DateFormat sdFormat = new SimpleDateFormat("yyyy.MM.dd");*/
-			
+
 			while (rs.next()) {
-				/*Date tempDate = (Date) sdFormat.parse(rs.getString("edate"));
-				Date d = tempDate;*/
 				Date date = rs.getDate("edate");
 				System.out.println("date값  "+date);
-				list.add(new Event(rs.getInt("no"), rs.getString("user_id"), rs.getString("title"),
+				list.add(new Event(rs.getString("title"),
 						rs.getString("detail"), date));
 			}
 			return list;

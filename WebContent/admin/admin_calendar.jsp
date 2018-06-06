@@ -17,9 +17,8 @@ String root = request.getContextPath();
 <script src='<%=root%>/js/fullcalendar.min.js'></script>
 <script src='<%=root%>/js/locale-all.js'></script>
 
-<script>
+<script> 
 $(document).ready(function() {
-	var events = [];
     $('#calendar').fullCalendar({
 	      header: {
 	        left: 'month',
@@ -37,28 +36,27 @@ $(document).ready(function() {
                     url: '<%=root%>/calendar.bt',
                     dataType: 'json',
                     data: {
-                      start: start.unix(),
-                      end: end.unix()
-                    },
+                        start:start.unix(),
+                        end: end.unix()
+                      },
                     success: function(data) {
                       var events = [];
                       $.each(data.calendar, function(index,cal){
                     events.push({
                                 title: cal.title,
-                                start :moment(cal.start, "yyyy.mm.dd"),
-                       			/* start: moment(cal.start).format('RRRR.mm.dd'),  */
+                                start: moment(cal.start).format("YYYY-MM-DD"),
                                 contents: cal.detail,
                                 color : "#f49542"
                               });
-                    });
+                    })
                  callback(events);
                     }
                   });
            },
           eventRender : function(event, element) {
  	   $(element).tooltip({title: event.title});
- 	}
-});
+ 		}
+	});
 });
 </script>
 </head>

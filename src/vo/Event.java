@@ -41,10 +41,8 @@ public class Event {
 		this.imgpath = imgpath;
 	}
 	
-	public Event(int no, String user_id, String title, String detail, Date date) {
+	public Event(String title, String detail, Date date) {
 		super();
-		this.no = no;
-		this.user_id = user_id;
 		this.title = title;
 		this.detail = detail;
 		this.date = date;
@@ -96,6 +94,14 @@ public class Event {
 
 	public void setImgpath(String imgpath) {
 		this.imgpath = imgpath;
+	}
+	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	@Override
