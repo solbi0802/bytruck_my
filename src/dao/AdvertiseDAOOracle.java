@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sql.MyConnection;
-import vo.Advertise;
+import vo.Advertisement;
 import vo.Board;
 
 public class AdvertiseDAOOracle implements AdvertiseDAO {
 
 	@Override
-	public List<Advertise> selectAllAd() throws Exception {
-		List<Advertise> list = new ArrayList<>();
+	public List<Advertisement> selectAllAd() throws Exception {
+		List<Advertisement> list = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -24,7 +24,7 @@ public class AdvertiseDAOOracle implements AdvertiseDAO {
 			pstmt = con.prepareStatement(selectAllSQL);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				list.add(new Advertise(rs.getInt("no"), rs.getString("title"), rs.getString("user_id")));
+				list.add(new Advertisement(rs.getInt("no"), rs.getString("title"), rs.getString("user_id")));
 			}
 		} finally {
 			MyConnection.close(rs, pstmt, con);
@@ -35,7 +35,7 @@ public class AdvertiseDAOOracle implements AdvertiseDAO {
 	public static void main(String[] args) {
 		AdvertiseDAOOracle test = new AdvertiseDAOOracle();
 		try {
-			List<Advertise> list = test.selectAllAd();
+			List<Advertisement> list = test.selectAllAd();
 			System.out.println(list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -45,11 +45,11 @@ public class AdvertiseDAOOracle implements AdvertiseDAO {
 	}
 
 	@Override
-	public Advertise selectDetail(int no) throws Exception {
+	public Advertisement selectDetail(int no) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		Advertise ad = new Advertise();
+		Advertisement ad = new Advertisement();
 		String selectDetailSQL = "SELECT no, title, user_id, detail"
 								+" FROM advertisement"
 								+" WHERE no = ?"
@@ -63,7 +63,7 @@ public class AdvertiseDAOOracle implements AdvertiseDAO {
 				String title = rs.getString("title");
 				String id = rs.getString("user_id");
 				String detail = rs.getString("detail");
-				ad = new Advertise(no, title, id, detail);
+				ad = new Advertisement(no, title, id, detail);
 			}
 		} finally {
 			MyConnection.close(rs, pstmt, con);

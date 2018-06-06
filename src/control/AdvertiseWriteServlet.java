@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.AdvertiseService;
-import vo.Advertise;
+import vo.Advertisement;
 
 public class AdvertiseWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -18,7 +18,7 @@ public class AdvertiseWriteServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String title = (String)request.getParameter("title");
 		String detail = (String)request.getParameter("detail");
-		Advertise ad = new Advertise();
+		Advertisement ad = new Advertisement();
 		ad.setUser_id(id);
 		ad.setTitle(title);
 		ad.setDetail(detail);

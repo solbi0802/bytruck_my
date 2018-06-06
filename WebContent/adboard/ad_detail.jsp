@@ -1,4 +1,4 @@
-<%@page import="vo.Advertise"%>
+<%@page import="vo.Advertisement"%>
 <%@page import="vo.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -11,7 +11,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<%=root%>/js/bootstrap.min.js"></script>
 <%
-Advertise ad = (Advertise)request.getAttribute("ad");
+	Advertisement ad = (Advertisement)request.getAttribute("ad");
 %>
 <style>
 .board {

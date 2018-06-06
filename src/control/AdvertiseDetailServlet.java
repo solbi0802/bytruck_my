@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.AdvertiseService;
-import vo.Advertise;
+import vo.Advertisement;
 
 /**
  * Servlet implementation class AdvertiseDetailServlet
@@ -34,7 +34,7 @@ public class AdvertiseDetailServlet extends HttpServlet {
 		request.setAttribute("num", num);
 		
 		try {
-			Advertise ad = service.findDetail(num);
+			Advertisement ad = service.findDetail(num);
 			request.setAttribute("ad", ad);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -2,9 +2,9 @@ package dao;
 
 import java.util.List;
 
-import vo.Advertise;
+import vo.Advertisement;
 
 public interface AdvertiseDAO {
-	public List<Advertise> selectAllAd() throws Exception;
-	public Advertise selectDetail(int no) throws Exception;
+	public List<Advertisement> selectAllAd() throws Exception;
+	public Advertisement selectDetail(int no) throws Exception;
 }

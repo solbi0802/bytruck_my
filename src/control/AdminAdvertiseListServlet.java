@@ -11,22 +11,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import service.AdvertiseService;
 import vo.Advertisement;
-import vo.Event;
 
 /**
- * Servlet implementation class AdvertiseListServlet
+ * Servlet implementation class AdminAdvertiseListServlet
  */
-public class AdvertiseListServlet extends HttpServlet {
+public class AdminAdvertiseListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private AdvertiseService service = new AdvertiseService();  
+    private AdvertiseService service = new AdvertiseService();   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdvertiseListServlet() {
+    public AdminAdvertiseListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-    
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			List<Advertisement> advertise = service.findAllAd();
@@ -39,4 +41,5 @@ public class AdvertiseListServlet extends HttpServlet {
 		rd = request.getRequestDispatcher(forwardURL);
 		rd.forward(request, response);
 	}
+
 }
