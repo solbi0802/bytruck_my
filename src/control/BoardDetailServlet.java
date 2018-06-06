@@ -41,8 +41,6 @@ public class BoardDetailServlet extends HttpServlet {
 		try {
 			Board board = service.findDetail(boardNum, type);
 			request.setAttribute("board", board);
-			System.out.println("서블릿에서 board값이 뭐냐: " + board);
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("result", e.getMessage());
